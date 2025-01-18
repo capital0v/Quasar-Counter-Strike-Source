@@ -44,7 +44,7 @@
             // 
             // ui_panel
             // 
-            ui_panel.Anchor = AnchorStyles.Top;
+            ui_panel.Anchor = AnchorStyles.None;
             ui_panel.BackColor = Color.FromArgb(25, 25, 25);
             ui_panel.Controls.Add(contact_button);
             ui_panel.Controls.Add(other_button);
@@ -56,7 +56,7 @@
             ui_panel.Font = new Font("Century Gothic", 13F, FontStyle.Bold);
             ui_panel.Location = new Point(-3, -1);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(811, 78);
+            ui_panel.Size = new Size(805, 76);
             ui_panel.TabIndex = 0;
             // 
             // contact_button
@@ -102,6 +102,7 @@
             misc_button.TabIndex = 3;
             misc_button.Text = "Misc";
             misc_button.UseVisualStyleBackColor = false;
+            misc_button.Click += misc_button_Click;
             // 
             // visual_button
             // 
@@ -127,18 +128,19 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top;
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(93, 25, 181);
-            panel1.Location = new Point(4, -7);
+            panel1.Location = new Point(-3, -7);
             panel1.Name = "panel1";
-            panel1.Size = new Size(810, 20);
+            panel1.Size = new Size(808, 20);
             panel1.TabIndex = 1;
             // 
             // container_panel
             // 
-            container_panel.Location = new Point(-3, 74);
+            container_panel.Anchor = AnchorStyles.None;
+            container_panel.Location = new Point(-3, 72);
             container_panel.Name = "container_panel";
-            container_panel.Size = new Size(808, 442);
+            container_panel.Size = new Size(805, 442);
             container_panel.TabIndex = 1;
             // 
             // CheatMenu
@@ -153,7 +155,6 @@
             MaximumSize = new Size(818, 553);
             MinimumSize = new Size(818, 553);
             Name = "CheatMenu";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quasar";
             FormClosing += CheatMenu_FormClosing;
             ui_panel.ResumeLayout(false);

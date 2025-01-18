@@ -1,4 +1,5 @@
 ﻿using Capitalov;
+using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using static Quasar.Offsets;
@@ -55,24 +56,22 @@ namespace Quasar.Features
                 Triggerbot();
                 MatFullBright();
                 WhiteTexture();
+                NoSmoke();
+                DrawHitboxes();
+                DrawTracers();
+                DrawShadowFrame();
+                DrawLowResolution();
 
                 Thread.Sleep(1);
             }
         }
 
-        public void Wallhack()
+        private void Wallhack()
         {
-            if (wallhackEnabled)
-            {
-                _memory.WriteInt(_client + r_drawothermodels, 2);
-            }
-            else
-            {
-                _memory.WriteInt(_client + r_drawothermodels, 1);
-            }
+            _memory.WriteInt(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
         }
 
-        public void EnableSvCheats()
+        private void EnableSvCheats()
         {
             while (true)
             {
@@ -81,7 +80,7 @@ namespace Quasar.Features
             }
         }
 
-        public void Bunnyhop()
+        private void Bunnyhop()
         {
             if (bunnyhopEnabled)
             {
@@ -96,31 +95,17 @@ namespace Quasar.Features
             }
         }
 
-        public void MatWireFrame()
+        private void MatWireFrame()
         {
-            if (wireframeEnabled)
-            {
-                _memory.WriteInt(_engine + mat_WireFrame, 1);
-            }
-            else
-            {
-                _memory.WriteInt(_engine + mat_WireFrame, 0);
-            }
+            _memory.WriteInt(_engine + mat_WireFrame, wireframeEnabled ? 1 : 0);
         }
 
-        public void ShowImpact()
+        private void ShowImpact()
         {
-            if (showimpactEnabled)
-            {
-                _memory.WriteInt(_server + sv_showimpact, 1);
-            }
-            else
-            {
-                _memory.WriteInt(_server + sv_showimpact, 0);
-            }
+            _memory.WriteInt(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
         }
 
-        public void Antiflash()
+        private void Antiflash()
         {
             if (antiflashEnabled)
             {
@@ -128,7 +113,7 @@ namespace Quasar.Features
             }
         }
 
-        public void Triggerbot()
+        private void Triggerbot()
         {
             if (triggerbotEnabled)
             {
@@ -156,7 +141,7 @@ namespace Quasar.Features
             }
         }
 
-        public void MatFullBright()
+        private void MatFullBright()
         {
             if (fullbrightEnabled)
             {
@@ -168,7 +153,7 @@ namespace Quasar.Features
             }
         }
 
-        public void WhiteTexture()
+        private void WhiteTexture()
         {
             if (whiteTextureEnabled)
             {
@@ -178,6 +163,31 @@ namespace Quasar.Features
             {
                 _memory.WriteInt(_materialsystem + mat_fullbright, 0);
             }
+        }
+
+        private void NoSmoke()
+        {
+            _memory.WriteInt(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
+        }
+
+        private void DrawHitboxes()
+        {
+            _memory.WriteInt(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
+        }
+
+        private void DrawTracers()
+        {
+            _memory.WriteInt(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
+        }
+
+        private void DrawShadowFrame()
+        {
+            _memory.WriteInt(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
+        }
+
+        private void DrawLowResolution()
+        {
+            _memory.WriteInt(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
     }
 }
