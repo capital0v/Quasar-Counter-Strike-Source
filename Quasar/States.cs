@@ -15,6 +15,7 @@
         public static bool tracersEnabled;
         public static bool shadowFrameEnabled;
         public static bool lowresolutionEnabled;
+        public static bool getInformationEnabled;
 
         public static void DisableAll()
         {
@@ -31,6 +32,7 @@
             tracersEnabled = false;
             shadowFrameEnabled = false;
             lowresolutionEnabled = false;
+            getInformationEnabled = false;
         }
     }
 }

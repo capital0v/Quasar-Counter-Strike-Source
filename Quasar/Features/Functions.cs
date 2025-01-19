@@ -19,12 +19,24 @@ namespace Quasar.Features
         private const uint MOUSEEVENTF_LEFTUP = 0x0004;
         #endregion
 
+        private static readonly Dictionary<int, string> Teams = new Dictionary<int, string>
+        {
+            { 1, "Spectator" },
+            { 2, "Terrorist" },
+            { 3, "Counter-Terrorist" }
+        };
+
+        private static readonly Dictionary<int, string> Flags = new Dictionary<int, string>
+        {
+            { 257, "Standing" },
+            { 256, "In air" },
+            { 261, "Not full crouching" },
+            { 263, "Crouching" }
+        };
+
         private Memory _memory = new Memory();
 
-        private nint _client;
-        private nint _engine;
-        private nint _server;
-        private nint _materialsystem;
+        private nint _client, _engine, _server, _materialsystem, _steam;
 
         private IntPtr _localPlayer;
 
@@ -34,7 +46,8 @@ namespace Quasar.Features
             _client = _memory.GetModuleBase("client.dll");
             _engine = _memory.GetModuleBase("engine.dll");
             _server = _memory.GetModuleBase("server.dll");
-            _materialsystem = _memory.GetModuleBase("materialsystem.dll");
+            _steam = _memory.GetModuleBase("server.dll");
+            _materialsystem = _memory.GetModuleBase("steamclient.dll");
 
             Task.Run(() =>
             {
@@ -189,5 +202,24 @@ namespace Quasar.Features
         {
             _memory.WriteInt(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
+
+        public string GetInformation()
+        {
+            if (getInformationEnabled)
+            {
+                int flagsID = _memory.ReadInt(_localPlayer + m_fFlags);
+                int teamID = _memory.ReadInt(_localPlayer + m_iTeamNum);
+                int health = _memory.ReadInt(_localPlayer + m_iHealth);
+                int armor = _memory.ReadInt(_localPlayer + m_iArmor);
+
+                string team = Teams.TryGetValue(teamID, out var teamName) ? teamName : "Unknown Team";
+                string flag = Flags.TryGetValue(flagsID, out var flagName) ? flagName : "Unknown State";
+
+                return $"Team: {team}\nStatus: {flag}\nHealth {health}\nArmor: {armor}";
+            }
+
+            return "Error";
+        }
+
     }
 }
