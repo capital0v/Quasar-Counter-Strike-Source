@@ -32,7 +32,7 @@
             ui_panel = new Panel();
             unhook_button = new Button();
             contact_button = new Button();
-            triggerbot_button = new Button();
+            changer_button = new Button();
             misc_button = new Button();
             visual_button = new Button();
             logo_picture = new PictureBox();
@@ -48,7 +48,7 @@
             ui_panel.BackColor = Color.FromArgb(25, 25, 25);
             ui_panel.Controls.Add(unhook_button);
             ui_panel.Controls.Add(contact_button);
-            ui_panel.Controls.Add(triggerbot_button);
+            ui_panel.Controls.Add(changer_button);
             ui_panel.Controls.Add(misc_button);
             ui_panel.Controls.Add(visual_button);
             ui_panel.Controls.Add(logo_picture);
@@ -83,16 +83,17 @@
             contact_button.UseVisualStyleBackColor = false;
             contact_button.Click += contact_button_Click;
             // 
-            // triggerbot_button
+            // changer_button
             // 
-            triggerbot_button.BackColor = Color.FromArgb(40, 40, 40);
-            triggerbot_button.FlatStyle = FlatStyle.Flat;
-            triggerbot_button.Location = new Point(369, 28);
-            triggerbot_button.Name = "triggerbot_button";
-            triggerbot_button.Size = new Size(119, 32);
-            triggerbot_button.TabIndex = 4;
-            triggerbot_button.Text = "Triggerbot";
-            triggerbot_button.UseVisualStyleBackColor = false;
+            changer_button.BackColor = Color.FromArgb(40, 40, 40);
+            changer_button.FlatStyle = FlatStyle.Flat;
+            changer_button.Location = new Point(369, 28);
+            changer_button.Name = "changer_button";
+            changer_button.Size = new Size(119, 32);
+            changer_button.TabIndex = 4;
+            changer_button.Text = "Changer";
+            changer_button.UseVisualStyleBackColor = false;
+            changer_button.Click += changer_button_Click;
             // 
             // misc_button
             // 
@@ -173,7 +174,7 @@
         private Button misc_button;
         private Button unhook_button;
         private Button contact_button;
-        private Button triggerbot_button;
+        private Button changer_button;
         private Panel container_panel;
     }
 }

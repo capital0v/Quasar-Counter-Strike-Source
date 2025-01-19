@@ -212,11 +212,13 @@ namespace Quasar.Features
                 int armor = _memory.ReadInt(_localPlayer + m_iArmor);
 
                 string weapon = _memory.ReadString(_client + weaponName, 15);
+                _memory.WriteString(_steam + nickname, "                                                        ");
+                _memory.WriteString(_steam + nickname, "капитал такта");
 
                 string team = Teams.TryGetValue(teamID, out var teamName) ? teamName : "Unknown Team";
                 string flag = Flags.TryGetValue(flagsID, out var flagName) ? flagName : "Unknown State";
 
-                return $"Team: {team}\nStatus: {flag}\nHealth {health}\nArmor: {armor} \n Weapon: {weapon}";
+                return $"Team: {team}\nStatus: {flag}\nHealth {health}\nArmor: {armor}\nWeapon: {weapon}";
             }
 
             return "Error";
@@ -225,6 +227,18 @@ namespace Quasar.Features
         public void RemoveHandShake()
         {
             _memory.WriteInt(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
+        }
+
+        public void ChangeNickname(string newNickname)
+        {
+            _memory.WriteString(_steam + nickname, "                                                        ");
+            _memory.WriteString(_steam + nickname, newNickname);
+        }
+
+        public void ChangeClantag(string newClantag)
+        {
+            _memory.WriteString(_steam + clantag, "                                                        ");
+            _memory.WriteString(_steam + clantag, newClantag);
         }
     }
 }

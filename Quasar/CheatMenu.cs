@@ -40,15 +40,21 @@ namespace Quasar
 
         private Visual_UC _visualUC = new Visual_UC();
         private Contacts_UC _contactsUC = new Contacts_UC();
+        private Changer_UC _changerUC;
         private Misc_UC _miscUC;
-        public CheatMenu()
+        public CheatMenu(bool windowed)
         {
             InitializeComponent();
 
             _functions.Inject();
             AddUserControl(_visualUC);
-            ResolutionSettings();
             _miscUC = new Misc_UC(_functions);
+            _changerUC = new Changer_UC(_functions);
+
+            if (windowed)
+            {
+                ResolutionSettings();
+            }
         }
 
         private void ResolutionSettings()
@@ -139,6 +145,11 @@ namespace Quasar
         private void contact_button_Click(object sender, EventArgs e)
         {
             AddUserControl(_contactsUC);
+        }
+
+        private void changer_button_Click(object sender, EventArgs e)
+        {
+            AddUserControl(_changerUC);
         }
     }
 }

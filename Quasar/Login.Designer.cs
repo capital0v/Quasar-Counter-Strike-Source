@@ -32,6 +32,7 @@
             panel1 = new Panel();
             visual_button = new Button();
             logo_pciture = new PictureBox();
+            windowed_checkbox = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)logo_pciture).BeginInit();
             SuspendLayout();
             // 
@@ -69,12 +70,23 @@
             logo_pciture.TabIndex = 4;
             logo_pciture.TabStop = false;
             // 
+            // windowed_checkbox
+            // 
+            windowed_checkbox.AutoSize = true;
+            windowed_checkbox.Location = new Point(51, 166);
+            windowed_checkbox.Name = "windowed_checkbox";
+            windowed_checkbox.Size = new Size(236, 26);
+            windowed_checkbox.TabIndex = 5;
+            windowed_checkbox.Text = "Game in Window Mode";
+            windowed_checkbox.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
             ClientSize = new Size(331, 278);
+            Controls.Add(windowed_checkbox);
             Controls.Add(logo_pciture);
             Controls.Add(visual_button);
             Controls.Add(panel1);
@@ -89,6 +101,7 @@
             Text = "Quasar";
             ((System.ComponentModel.ISupportInitialize)logo_pciture).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -96,5 +109,6 @@
         private Panel panel1;
         private Button visual_button;
         private PictureBox logo_pciture;
+        private CheckBox windowed_checkbox;
     }
 }

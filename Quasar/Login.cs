@@ -16,7 +16,7 @@ namespace Quasar
             if (processes.Length > 0)
             {
                 this.Hide();
-                CheatMenu menu = new CheatMenu();
+                CheatMenu menu = new CheatMenu(windowed_checkbox.Checked);
                 menu.Show();
             }
             else

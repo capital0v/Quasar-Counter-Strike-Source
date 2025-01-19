@@ -170,8 +170,7 @@
             // 
             // Misc_UC
             // 
-            AutoScaleDimensions = new SizeF(10F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(30, 30, 30);
             Controls.Add(ui2_panel);
             Controls.Add(ui2_label);
