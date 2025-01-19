@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\features\\functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:features\\functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\contacts_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\contacts_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,40 +31,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Misc_UC.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs",
-              "RelativeDocumentMoniker": "UserControls\\Misc_UC.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs",
-              "RelativeToolTip": "UserControls\\Misc_UC.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAADwv00AAAAgAAAAAAAAAA==",
+              "Title": "Contacts_UC.cs",
+              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Contacts_UC.cs",
+              "RelativeDocumentMoniker": "UserControls\\Contacts_UC.cs",
+              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Contacts_UC.cs",
+              "RelativeToolTip": "UserControls\\Contacts_UC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-19T00:26:55.842Z",
+              "WhenOpened": "2025-01-19T20:34:47.21Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Functions.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Features\\Functions.cs",
-              "RelativeDocumentMoniker": "Features\\Functions.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Features\\Functions.cs",
-              "RelativeToolTip": "Features\\Functions.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAiwNwAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T18:14:46.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Misc_UC.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs",
-              "RelativeDocumentMoniker": "UserControls\\Misc_UC.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs [Design]",
-              "RelativeToolTip": "UserControls\\Misc_UC.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T13:25:27.511Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }

@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Reference Include="Capitalov">
-      <HintPath>..\..\..\Desktop\Capitalov.dll</HintPath>
+      <HintPath>Assets\Capitalov.dll</HintPath>
     </Reference>
   </ItemGroup>
 

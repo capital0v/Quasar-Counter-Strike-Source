@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             ui_panel = new Panel();
+            handshake_checkbox = new CheckBox();
             triggerbot_checkbox = new CheckBox();
             bunnyhop_checkbox = new CheckBox();
             antiflash_checkbox = new CheckBox();
@@ -46,13 +47,25 @@
             // ui_panel
             // 
             ui_panel.BackColor = Color.FromArgb(40, 40, 40);
+            ui_panel.Controls.Add(handshake_checkbox);
             ui_panel.Controls.Add(triggerbot_checkbox);
             ui_panel.Controls.Add(bunnyhop_checkbox);
             ui_panel.Controls.Add(antiflash_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 121);
+            ui_panel.Size = new Size(335, 147);
             ui_panel.TabIndex = 8;
+            // 
+            // handshake_checkbox
+            // 
+            handshake_checkbox.AutoSize = true;
+            handshake_checkbox.Location = new Point(13, 105);
+            handshake_checkbox.Name = "handshake_checkbox";
+            handshake_checkbox.Size = new Size(213, 26);
+            handshake_checkbox.TabIndex = 3;
+            handshake_checkbox.Text = "Remove Hand Shake";
+            handshake_checkbox.UseVisualStyleBackColor = true;
+            handshake_checkbox.CheckedChanged += handshake_checkbox_CheckedChanged;
             // 
             // triggerbot_checkbox
             // 
@@ -195,5 +208,6 @@
         private CheckBox getinformation_checkbox;
         private Label update_checkbox;
         private TextBox update_textbox;
+        private CheckBox handshake_checkbox;
     }
 }

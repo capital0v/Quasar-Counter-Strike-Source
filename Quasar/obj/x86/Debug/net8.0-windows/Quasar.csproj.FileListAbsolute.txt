@@ -51,3 +51,4 @@ C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debu
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\NAudio.WinForms.dll
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\NAudio.WinMM.dll
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.UserControls.Misc_UC.resources
+C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.UserControls.Contacts_UC.resources

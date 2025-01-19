@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheatMenu));
             ui_panel = new Panel();
+            unhook_button = new Button();
             contact_button = new Button();
-            other_button = new Button();
             triggerbot_button = new Button();
             misc_button = new Button();
             visual_button = new Button();
@@ -46,8 +46,8 @@
             // 
             ui_panel.Anchor = AnchorStyles.None;
             ui_panel.BackColor = Color.FromArgb(25, 25, 25);
+            ui_panel.Controls.Add(unhook_button);
             ui_panel.Controls.Add(contact_button);
-            ui_panel.Controls.Add(other_button);
             ui_panel.Controls.Add(triggerbot_button);
             ui_panel.Controls.Add(misc_button);
             ui_panel.Controls.Add(visual_button);
@@ -59,27 +59,29 @@
             ui_panel.Size = new Size(805, 76);
             ui_panel.TabIndex = 0;
             // 
+            // unhook_button
+            // 
+            unhook_button.BackColor = Color.FromArgb(40, 40, 40);
+            unhook_button.FlatStyle = FlatStyle.Flat;
+            unhook_button.Location = new Point(657, 28);
+            unhook_button.Name = "unhook_button";
+            unhook_button.Size = new Size(119, 32);
+            unhook_button.TabIndex = 6;
+            unhook_button.Text = "Unhook";
+            unhook_button.UseVisualStyleBackColor = false;
+            unhook_button.Click += unhook_button_Click;
+            // 
             // contact_button
             // 
             contact_button.BackColor = Color.FromArgb(40, 40, 40);
             contact_button.FlatStyle = FlatStyle.Flat;
-            contact_button.Location = new Point(657, 28);
+            contact_button.Location = new Point(513, 28);
             contact_button.Name = "contact_button";
             contact_button.Size = new Size(119, 32);
-            contact_button.TabIndex = 6;
+            contact_button.TabIndex = 5;
             contact_button.Text = "Contact";
             contact_button.UseVisualStyleBackColor = false;
-            // 
-            // other_button
-            // 
-            other_button.BackColor = Color.FromArgb(40, 40, 40);
-            other_button.FlatStyle = FlatStyle.Flat;
-            other_button.Location = new Point(513, 28);
-            other_button.Name = "other_button";
-            other_button.Size = new Size(119, 32);
-            other_button.TabIndex = 5;
-            other_button.Text = "Other";
-            other_button.UseVisualStyleBackColor = false;
+            contact_button.Click += contact_button_Click;
             // 
             // triggerbot_button
             // 
@@ -169,8 +171,8 @@
         private PictureBox logo_picture;
         private Button visual_button;
         private Button misc_button;
+        private Button unhook_button;
         private Button contact_button;
-        private Button other_button;
         private Button triggerbot_button;
         private Panel container_panel;
     }

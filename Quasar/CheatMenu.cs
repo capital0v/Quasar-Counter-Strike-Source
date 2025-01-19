@@ -39,6 +39,7 @@ namespace Quasar
         private Functions _functions = new Functions();
 
         private Visual_UC _visualUC = new Visual_UC();
+        private Contacts_UC _contactsUC = new Contacts_UC();
         private Misc_UC _miscUC;
         public CheatMenu()
         {
@@ -127,6 +128,17 @@ namespace Quasar
         private void misc_button_Click(object sender, EventArgs e)
         {
             AddUserControl(_miscUC);
+        }
+
+        private void unhook_button_Click(object sender, EventArgs e)
+        {
+            States.DisableAll();
+            Environment.Exit(0);
+        }
+
+        private void contact_button_Click(object sender, EventArgs e)
+        {
+            AddUserControl(_contactsUC);
         }
     }
 }

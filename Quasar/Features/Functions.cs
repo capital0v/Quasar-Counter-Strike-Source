@@ -1,6 +1,4 @@
 ﻿using Capitalov;
-using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using static Quasar.Offsets;
 using static Quasar.States;
@@ -46,8 +44,8 @@ namespace Quasar.Features
             _client = _memory.GetModuleBase("client.dll");
             _engine = _memory.GetModuleBase("engine.dll");
             _server = _memory.GetModuleBase("server.dll");
-            _steam = _memory.GetModuleBase("server.dll");
-            _materialsystem = _memory.GetModuleBase("steamclient.dll");
+            _steam = _memory.GetModuleBase("steamclient.dll");
+            _materialsystem = _memory.GetModuleBase("materialsystem.dll");
 
             Task.Run(() =>
             {
@@ -74,6 +72,7 @@ namespace Quasar.Features
                 DrawTracers();
                 DrawShadowFrame();
                 DrawLowResolution();
+                RemoveHandShake();
 
                 Thread.Sleep(1);
             }
@@ -212,14 +211,20 @@ namespace Quasar.Features
                 int health = _memory.ReadInt(_localPlayer + m_iHealth);
                 int armor = _memory.ReadInt(_localPlayer + m_iArmor);
 
+                string weapon = _memory.ReadString(_client + weaponName, 15);
+
                 string team = Teams.TryGetValue(teamID, out var teamName) ? teamName : "Unknown Team";
                 string flag = Flags.TryGetValue(flagsID, out var flagName) ? flagName : "Unknown State";
 
-                return $"Team: {team}\nStatus: {flag}\nHealth {health}\nArmor: {armor}";
+                return $"Team: {team}\nStatus: {flag}\nHealth {health}\nArmor: {armor} \n Weapon: {weapon}";
             }
 
             return "Error";
         }
 
+        public void RemoveHandShake()
+        {
+            _memory.WriteInt(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
+        }
     }
 }

@@ -16,6 +16,7 @@
         public static bool shadowFrameEnabled;
         public static bool lowresolutionEnabled;
         public static bool getInformationEnabled;
+        public static bool removeHandShakeEnabled;
 
         public static void DisableAll()
         {
@@ -33,6 +34,7 @@
             shadowFrameEnabled = false;
             lowresolutionEnabled = false;
             getInformationEnabled = false;
+            removeHandShakeEnabled = false;
         }
     }
 }
