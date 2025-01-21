@@ -78,11 +78,5 @@ namespace Quasar.UserControls
         {
             UpdateInformation();
         }
-
-        private void handshake_checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-            removeHandShakeEnabled = handshake_checkbox.Checked;
-            PlaySound(_menuSound);
-        }
     }
 }

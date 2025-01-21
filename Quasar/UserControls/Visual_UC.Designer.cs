@@ -29,19 +29,18 @@
         private void InitializeComponent()
         {
             wallhack_checkbox = new CheckBox();
-            wireframe_checkbox = new CheckBox();
             showshots_checkbox = new CheckBox();
             fullbright_checkbox = new CheckBox();
             whiteTexture_checkbox = new CheckBox();
             nosmoke_checkbox = new CheckBox();
             hitboxes_checkbox = new CheckBox();
             ui_panel = new Panel();
+            shadow_checkbox = new CheckBox();
             tracers_checkbox = new CheckBox();
             panel1 = new Panel();
             minecraft_checkbox = new CheckBox();
             ui_label = new Label();
             ui2_label = new Label();
-            shadow_checkbox = new CheckBox();
             ui_panel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -56,17 +55,6 @@
             wallhack_checkbox.Text = "Wallhack";
             wallhack_checkbox.UseVisualStyleBackColor = true;
             wallhack_checkbox.CheckedChanged += wallhack_checkbox_CheckedChanged;
-            // 
-            // wireframe_checkbox
-            // 
-            wireframe_checkbox.AutoSize = true;
-            wireframe_checkbox.Location = new Point(14, 42);
-            wireframe_checkbox.Name = "wireframe_checkbox";
-            wireframe_checkbox.Size = new Size(119, 26);
-            wireframe_checkbox.TabIndex = 1;
-            wireframe_checkbox.Text = "Wireframe";
-            wireframe_checkbox.UseVisualStyleBackColor = true;
-            wireframe_checkbox.CheckedChanged += wireframe_checkbox_CheckedChanged;
             // 
             // showshots_checkbox
             // 
@@ -130,11 +118,21 @@
             ui_panel.Controls.Add(tracers_checkbox);
             ui_panel.Controls.Add(hitboxes_checkbox);
             ui_panel.Controls.Add(wallhack_checkbox);
-            ui_panel.Controls.Add(wireframe_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
             ui_panel.Size = new Size(335, 345);
             ui_panel.TabIndex = 7;
+            // 
+            // shadow_checkbox
+            // 
+            shadow_checkbox.AutoSize = true;
+            shadow_checkbox.Location = new Point(14, 42);
+            shadow_checkbox.Name = "shadow_checkbox";
+            shadow_checkbox.Size = new Size(160, 26);
+            shadow_checkbox.TabIndex = 8;
+            shadow_checkbox.Text = "Shadow Frame";
+            shadow_checkbox.UseVisualStyleBackColor = true;
+            shadow_checkbox.CheckedChanged += shadow_checkbox_CheckedChanged;
             // 
             // tracers_checkbox
             // 
@@ -189,17 +187,6 @@
             ui2_label.TabIndex = 10;
             ui2_label.Text = "World";
             // 
-            // shadow_checkbox
-            // 
-            shadow_checkbox.AutoSize = true;
-            shadow_checkbox.Location = new Point(14, 132);
-            shadow_checkbox.Name = "shadow_checkbox";
-            shadow_checkbox.Size = new Size(160, 26);
-            shadow_checkbox.TabIndex = 8;
-            shadow_checkbox.Text = "Shadow Frame";
-            shadow_checkbox.UseVisualStyleBackColor = true;
-            shadow_checkbox.CheckedChanged += shadow_checkbox_CheckedChanged;
-            // 
             // Visual_UC
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
@@ -227,7 +214,6 @@
         #endregion
 
         private CheckBox wallhack_checkbox;
-        private CheckBox wireframe_checkbox;
         private CheckBox showshots_checkbox;
         private CheckBox fullbright_checkbox;
         private CheckBox whiteTexture_checkbox;

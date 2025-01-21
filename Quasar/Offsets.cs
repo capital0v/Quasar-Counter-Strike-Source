@@ -6,6 +6,7 @@
         public static int sv_cheats = 0x616A70;
         public static int sv_showimpact = 0x588598;
         public static int weaponName = 0x4D4E63;
+        public static int thirdperson = 0x5065AC;
 
         public static int r_drawothermodels = 0x4C4BA0;
         public static int r_drawparticles = 0x4F7A40;

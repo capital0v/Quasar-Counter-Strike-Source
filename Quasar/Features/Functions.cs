@@ -61,7 +61,6 @@ namespace Quasar.Features
                 _localPlayer = _memory.ReadInt(_client, dwLocalPlayer);
                 Bunnyhop();
                 Wallhack();
-                MatWireFrame();
                 ShowImpact();
                 Antiflash();
                 Triggerbot();
@@ -72,7 +71,6 @@ namespace Quasar.Features
                 DrawTracers();
                 DrawShadowFrame();
                 DrawLowResolution();
-                RemoveHandShake();
 
                 Thread.Sleep(1);
             }
@@ -107,10 +105,10 @@ namespace Quasar.Features
             }
         }
 
-        private void MatWireFrame()
+        /*private void MatWireFrame()
         {
             _memory.WriteInt(_engine + mat_WireFrame, wireframeEnabled ? 1 : 0);
-        }
+        }*/
 
         private void ShowImpact()
         {
@@ -212,8 +210,6 @@ namespace Quasar.Features
                 int armor = _memory.ReadInt(_localPlayer + m_iArmor);
 
                 string weapon = _memory.ReadString(_client + weaponName, 15);
-                _memory.WriteString(_steam + nickname, "                                                        ");
-                _memory.WriteString(_steam + nickname, "капитал такта");
 
                 string team = Teams.TryGetValue(teamID, out var teamName) ? teamName : "Unknown Team";
                 string flag = Flags.TryGetValue(flagsID, out var flagName) ? flagName : "Unknown State";
@@ -224,10 +220,10 @@ namespace Quasar.Features
             return "Error";
         }
 
-        public void RemoveHandShake()
+        /*private void RemoveHandShake()
         {
             _memory.WriteInt(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
-        }
+        }*/
 
         public void ChangeNickname(string newNickname)
         {
@@ -240,5 +236,10 @@ namespace Quasar.Features
             _memory.WriteString(_steam + clantag, "                                                        ");
             _memory.WriteString(_steam + clantag, newClantag);
         }
+
+        /*private void Thirdperson()
+        {
+            _memory.WriteInt(_client + thirdperson, thirdpersonEnabled ? 256 : 0);
+        }*/
     }
 }

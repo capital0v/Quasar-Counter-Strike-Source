@@ -4,7 +4,6 @@
     {
         public static bool bunnyhopEnabled;
         public static bool wallhackEnabled;
-        public static bool wireframeEnabled;
         public static bool showimpactEnabled;
         public static bool antiflashEnabled;
         public static bool triggerbotEnabled;
@@ -16,13 +15,11 @@
         public static bool shadowFrameEnabled;
         public static bool lowresolutionEnabled;
         public static bool getInformationEnabled;
-        public static bool removeHandShakeEnabled;
 
         public static void DisableAll()
         {
             bunnyhopEnabled = false;
             wallhackEnabled = false;
-            wireframeEnabled = false;
             showimpactEnabled = false;
             antiflashEnabled = false;
             triggerbotEnabled = false;
@@ -34,7 +31,6 @@
             shadowFrameEnabled = false;
             lowresolutionEnabled = false;
             getInformationEnabled = false;
-            removeHandShakeEnabled = false;
         }
     }
 }
