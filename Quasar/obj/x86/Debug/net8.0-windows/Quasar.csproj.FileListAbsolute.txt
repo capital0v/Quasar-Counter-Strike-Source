@@ -38,7 +38,6 @@ C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debu
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\Quasar.runtimeconfig.json
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\Quasar.dll
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\Quasar.pdb
-C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\Capitalov.dll
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.csproj.AssemblyReference.cache
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.csproj.Up2Date
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.genruntimeconfig.cache
@@ -53,3 +52,4 @@ C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debu
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.UserControls.Misc_UC.resources
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.UserControls.Contacts_UC.resources
 C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\obj\x86\Debug\net8.0-windows\Quasar.UserControls.Changer_UC.resources
+C:\Users\danya\Documents\GitHub\Quasar-Counter-Strike-Source\Quasar\bin\x86\Debug\net8.0-windows\MemoryRaider.dll

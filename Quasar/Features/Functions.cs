@@ -32,7 +32,7 @@ namespace Quasar.Features
             { 263, "Crouching" }
         };
 
-        private Memory _memory = new Memory();
+        private MemoryRaider _memory = new MemoryRaider();
 
         private nint _client, _engine, _server, _materialsystem, _steam;
 
@@ -58,7 +58,8 @@ namespace Quasar.Features
         {
             while (true)
             {
-                _localPlayer = _memory.ReadInt(_client, dwLocalPlayer);
+                _localPlayer = _memory.ReadPointer(_client, dwLocalPlayer);
+
                 Bunnyhop();
                 Wallhack();
                 ShowImpact();
@@ -78,14 +79,14 @@ namespace Quasar.Features
 
         private void Wallhack()
         {
-            _memory.WriteInt(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
+            _memory.Write<int>(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
         }
 
         private void EnableSvCheats()
         {
             while (true)
             {
-                _memory.WriteInt(_engine + sv_cheats, 1);
+                _memory.Write<int>(_engine + sv_cheats, 1);
                 Thread.Sleep(500);
             }
         }
@@ -94,32 +95,32 @@ namespace Quasar.Features
         {
             if (bunnyhopEnabled)
             {
-                int flags = _memory.ReadInt(_localPlayer + m_fFlags);
+                int flags = _memory.Read<int>(_localPlayer + m_fFlags);
 
                 if (GetAsyncKeyState(Keys.Space) < 0 && (flags == 257 || flags == 263))
                 {
-                    _memory.WriteInt(_client + dwForceJump, 5);
+                    _memory.Write<int>(_client + dwForceJump, 5);
                     Thread.Sleep(1);
-                    _memory.WriteInt(_client + dwForceJump, 4);
+                    _memory.Write<int>(_client + dwForceJump, 4);
                 }
             }
         }
 
         /*private void MatWireFrame()
         {
-            _memory.WriteInt(_engine + mat_WireFrame, wireframeEnabled ? 1 : 0);
+            _memory.Write<int>(_engine + mat_WireFrame, wireframeEnabled ? 1 : 0);
         }*/
 
         private void ShowImpact()
         {
-            _memory.WriteInt(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
+            _memory.Write<int>(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
         }
 
         private void Antiflash()
         {
             if (antiflashEnabled)
             {
-                _memory.WriteInt(_localPlayer + fMaxFlashAlpha, 0);
+                _memory.Write<int>(_localPlayer + fMaxFlashAlpha, 0);
             }
         }
 
@@ -127,16 +128,16 @@ namespace Quasar.Features
         {
             if (triggerbotEnabled)
             {
-                int crosshair = _memory.ReadInt(_localPlayer + crosshairID);
+                int crosshair = _memory.Read<int>(_localPlayer + crosshairID);
 
                 if (crosshair != 0 && crosshair <= 64)
                 {
-                    int entity = _memory.ReadInt(_client + (dwEntityList + (crosshair - 1) * 0x10));
+                    int entity = _memory.Read<int>(_client + (dwEntityList + (crosshair - 1) * 0x10));
 
                     if (entity != 0)
                     {
-                        int enemyTeam = _memory.ReadInt(entity + m_iTeamNum);
-                        int playerTeam = _memory.ReadInt(_localPlayer + m_iTeamNum);
+                        int enemyTeam = _memory.Read<int>(entity + m_iTeamNum);
+                        int playerTeam = _memory.Read<int>(_localPlayer + m_iTeamNum);
 
                         if (playerTeam != enemyTeam)
                         {
@@ -155,11 +156,11 @@ namespace Quasar.Features
         {
             if (fullbrightEnabled)
             {
-                _memory.WriteInt(_materialsystem + mat_fullbright, 1);
+                _memory.Write<int>(_materialsystem + mat_fullbright, 1);
             }
-            else if(!whiteTextureEnabled)
+            else if (!whiteTextureEnabled)
             {
-                _memory.WriteInt(_materialsystem + mat_fullbright, 0);
+                _memory.Write<int>(_materialsystem + mat_fullbright, 0);
             }
         }
 
@@ -167,47 +168,47 @@ namespace Quasar.Features
         {
             if (whiteTextureEnabled)
             {
-                _memory.WriteInt(_materialsystem + mat_fullbright, 2);
+                _memory.Write<int>(_materialsystem + mat_fullbright, 2);
             }
-            else if(!fullbrightEnabled)
+            else if (!fullbrightEnabled)
             {
-                _memory.WriteInt(_materialsystem + mat_fullbright, 0);
+                _memory.Write<int>(_materialsystem + mat_fullbright, 0);
             }
         }
 
         private void NoSmoke()
         {
-            _memory.WriteInt(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
+            _memory.Write<int>(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
         }
 
         private void DrawHitboxes()
         {
-            _memory.WriteInt(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
+            _memory.Write<int>(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
         }
 
         private void DrawTracers()
         {
-            _memory.WriteInt(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
+            _memory.Write<int>(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
         }
 
         private void DrawShadowFrame()
         {
-            _memory.WriteInt(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
+            _memory.Write<int>(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
         }
 
         private void DrawLowResolution()
         {
-            _memory.WriteInt(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
+            _memory.Write<int>(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
 
         public string GetInformation()
         {
             if (getInformationEnabled)
             {
-                int flagsID = _memory.ReadInt(_localPlayer + m_fFlags);
-                int teamID = _memory.ReadInt(_localPlayer + m_iTeamNum);
-                int health = _memory.ReadInt(_localPlayer + m_iHealth);
-                int armor = _memory.ReadInt(_localPlayer + m_iArmor);
+                int flagsID = _memory.Read<int>(_localPlayer + m_fFlags);
+                int teamID = _memory.Read<int>(_localPlayer + m_iTeamNum);
+                int health = _memory.Read<int>(_localPlayer + m_iHealth);
+                int armor = _memory.Read<int>(_localPlayer + m_iArmor);
 
                 string weapon = _memory.ReadString(_client + weaponName, 15);
 
@@ -222,7 +223,7 @@ namespace Quasar.Features
 
         /*private void RemoveHandShake()
         {
-            _memory.WriteInt(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
+            _memory.Write<int>(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
         }*/
 
         public void ChangeNickname(string newNickname)
@@ -239,7 +240,7 @@ namespace Quasar.Features
 
         /*private void Thirdperson()
         {
-            _memory.WriteInt(_client + thirdperson, thirdpersonEnabled ? 256 : 0);
+            _memory.Write<int>(_client + thirdperson, thirdpersonEnabled ? 256 : 0);
         }*/
     }
 }

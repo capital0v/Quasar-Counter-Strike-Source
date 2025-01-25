@@ -33,12 +33,6 @@ namespace Quasar.UserControls
             PlaySound(_menuSound);
         }
 
-        private void wireframe_checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-            wireframeEnabled = wireframe_checkbox.Checked;
-            PlaySound(_menuSound);
-        }
-
         private void showshots_checkbox_CheckedChanged(object sender, EventArgs e)
         {
             showimpactEnabled = showshots_checkbox.Checked;

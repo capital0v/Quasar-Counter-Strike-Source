@@ -9,7 +9,7 @@
       "Quasar/1.0.0": {
         "dependencies": {
           "NAudio": "2.2.1",
-          "Capitalov": "1.0.0.0"
+          "MemoryRaider": "1.2.1.0"
         },
         "runtime": {
           "Quasar.dll": {}
@@ -110,11 +110,11 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "Capitalov/1.0.0.0": {
+      "MemoryRaider/1.2.1.0": {
         "runtime": {
-          "Capitalov.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+          "MemoryRaider.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
           }
         }
       }
@@ -203,7 +203,7 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "Capitalov/1.0.0.0": {
+    "MemoryRaider/1.2.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
