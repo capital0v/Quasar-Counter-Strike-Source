@@ -7,7 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Platforms>x86</Platforms>
+    <ApplicationIcon>Assets\Logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.2.1" />
@@ -15,7 +20,7 @@
 
   <ItemGroup>
     <Reference Include="MemoryRaider">
-      <HintPath>Assets\Library\MemoryRaider.dll</HintPath>
+      <HintPath>..\..\MemoryRaider\Memory Raider x86\MemoryRaider\bin\x86\Release\net8.0\MemoryRaider.dll</HintPath>
     </Reference>
   </ItemGroup>
 
