@@ -106,11 +106,6 @@ namespace Quasar.Features
             }
         }
 
-        /*private void MatWireFrame()
-        {
-            _memory.Write<int>(_engine + mat_WireFrame, wireframeEnabled ? 1 : 0);
-        }*/
-
         private void ShowImpact()
         {
             _memory.Write<int>(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
@@ -221,11 +216,6 @@ namespace Quasar.Features
             return "Error";
         }
 
-        /*private void RemoveHandShake()
-        {
-            _memory.Write<int>(_client + cl_bob, removeHandShakeEnabled ? 0 : 1);
-        }*/
-
         public void ChangeNickname(string newNickname)
         {
             _memory.WriteString(_steam + nickname, "                                                        ");
@@ -237,10 +227,5 @@ namespace Quasar.Features
             _memory.WriteString(_steam + clantag, "                                                        ");
             _memory.WriteString(_steam + clantag, newClantag);
         }
-
-        /*private void Thirdperson()
-        {
-            _memory.Write<int>(_client + thirdperson, thirdpersonEnabled ? 256 : 0);
-        }*/
     }
 }

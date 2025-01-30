@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Quasar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c03e812cd74d3569888e13ba68a82e61bd04a49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c4843ea7f5e9ae478aacb6fa6c394be1f72a196")]
 [assembly: System.Reflection.AssemblyProductAttribute("Quasar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Quasar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
