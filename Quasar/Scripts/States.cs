@@ -1,4 +1,4 @@
-﻿namespace Quasar
+﻿namespace Quasar.Scripts
 {
     class States
     {
@@ -15,6 +15,7 @@
         public static bool shadowFrameEnabled;
         public static bool lowresolutionEnabled;
         public static bool getInformationEnabled;
+        public static bool aimbotEnabled;
 
         public static void DisableAll()
         {
@@ -31,6 +32,7 @@
             shadowFrameEnabled = false;
             lowresolutionEnabled = false;
             getInformationEnabled = false;
+            aimbotEnabled = false;
         }
     }
 }

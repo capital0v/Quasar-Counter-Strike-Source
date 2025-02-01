@@ -39,8 +39,17 @@
             update_checkbox = new Label();
             getinformation_checkbox = new CheckBox();
             information_label = new Label();
+            label1 = new Label();
+            panel1 = new Panel();
+            clantag_button = new Button();
+            ui3_label = new Label();
+            clantag_textbox = new TextBox();
+            nickname_button = new Button();
+            label2 = new Label();
+            nickname_textbox = new TextBox();
             ui_panel.SuspendLayout();
             ui2_panel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // ui_panel
@@ -114,7 +123,7 @@
             ui2_panel.Controls.Add(information_label);
             ui2_panel.Location = new Point(428, 66);
             ui2_panel.Name = "ui2_panel";
-            ui2_panel.Size = new Size(335, 345);
+            ui2_panel.Size = new Size(335, 363);
             ui2_panel.TabIndex = 9;
             // 
             // update_textbox
@@ -155,10 +164,93 @@
             information_label.TabIndex = 12;
             information_label.Text = "Information";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(24, 202);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 22);
+            label1.TabIndex = 14;
+            label1.Text = "Changer";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(40, 40, 40);
+            panel1.Controls.Add(clantag_button);
+            panel1.Controls.Add(ui3_label);
+            panel1.Controls.Add(clantag_textbox);
+            panel1.Controls.Add(nickname_button);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(nickname_textbox);
+            panel1.Location = new Point(24, 242);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(335, 187);
+            panel1.TabIndex = 13;
+            // 
+            // clantag_button
+            // 
+            clantag_button.BackColor = Color.FromArgb(40, 40, 40);
+            clantag_button.FlatStyle = FlatStyle.Flat;
+            clantag_button.Location = new Point(189, 143);
+            clantag_button.Name = "clantag_button";
+            clantag_button.Size = new Size(124, 29);
+            clantag_button.TabIndex = 16;
+            clantag_button.Text = "Confirm";
+            clantag_button.UseVisualStyleBackColor = false;
+            clantag_button.Click += clantag_button_Click;
+            // 
+            // ui3_label
+            // 
+            ui3_label.AutoSize = true;
+            ui3_label.Location = new Point(12, 107);
+            ui3_label.Name = "ui3_label";
+            ui3_label.Size = new Size(80, 22);
+            ui3_label.TabIndex = 17;
+            ui3_label.Text = "Clantag";
+            // 
+            // clantag_textbox
+            // 
+            clantag_textbox.Location = new Point(17, 143);
+            clantag_textbox.Name = "clantag_textbox";
+            clantag_textbox.Size = new Size(124, 29);
+            clantag_textbox.TabIndex = 18;
+            clantag_textbox.Text = "...";
+            // 
+            // nickname_button
+            // 
+            nickname_button.BackColor = Color.FromArgb(40, 40, 40);
+            nickname_button.FlatStyle = FlatStyle.Flat;
+            nickname_button.Location = new Point(189, 50);
+            nickname_button.Name = "nickname_button";
+            nickname_button.Size = new Size(124, 29);
+            nickname_button.TabIndex = 13;
+            nickname_button.Text = "Confirm";
+            nickname_button.UseVisualStyleBackColor = false;
+            nickname_button.Click += nickname_button_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(101, 22);
+            label2.TabIndex = 13;
+            label2.Text = "Nickname";
+            // 
+            // nickname_textbox
+            // 
+            nickname_textbox.Location = new Point(17, 50);
+            nickname_textbox.Name = "nickname_textbox";
+            nickname_textbox.Size = new Size(124, 29);
+            nickname_textbox.TabIndex = 15;
+            nickname_textbox.Text = "...";
+            // 
             // Misc_UC
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(label1);
+            Controls.Add(panel1);
             Controls.Add(ui2_panel);
             Controls.Add(ui2_label);
             Controls.Add(ui_label);
@@ -174,6 +266,8 @@
             ui_panel.PerformLayout();
             ui2_panel.ResumeLayout(false);
             ui2_panel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -194,5 +288,13 @@
         private CheckBox getinformation_checkbox;
         private Label update_checkbox;
         private TextBox update_textbox;
+        private Label label1;
+        private Panel panel1;
+        private Button clantag_button;
+        private Label ui3_label;
+        private TextBox clantag_textbox;
+        private Button nickname_button;
+        private Label label2;
+        private TextBox nickname_textbox;
     }
 }

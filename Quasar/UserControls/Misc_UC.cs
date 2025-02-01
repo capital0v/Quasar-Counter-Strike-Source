@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 using Quasar.Features;
-using static Quasar.States;
+using static Quasar.Scripts.States;
 
 namespace Quasar.UserControls
 {
@@ -77,6 +77,16 @@ namespace Quasar.UserControls
         private void update_textbox_TextChanged(object sender, EventArgs e)
         {
             UpdateInformation();
+        }
+
+        private void nickname_button_Click(object sender, EventArgs e)
+        {
+            _functions.ChangeNickname(nickname_textbox.Text);
+        }
+
+        private void clantag_button_Click(object sender, EventArgs e)
+        {
+            _functions.ChangeClantag(clantag_textbox.Text);
         }
     }
 }

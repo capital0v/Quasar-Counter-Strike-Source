@@ -1,4 +1,4 @@
-﻿namespace Quasar
+﻿namespace Quasar.Scripts
 {
     class Offsets
     {

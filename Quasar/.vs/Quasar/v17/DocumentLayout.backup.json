@@ -7,24 +7,16 @@
       "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:features\\functions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\states.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:states.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\aimbot_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\aimbot_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\offsets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:offsets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\misc_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|c:\\users\\danya\\documents\\github\\quasar-counter-strike-source\\quasar\\usercontrols\\aimbot_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D9F42D0D-2F08-465C-B3EC-DE766222BA7A}|Quasar.csproj|solutionrelative:usercontrols\\aimbot_uc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,70 +48,47 @@
               "RelativeDocumentMoniker": "Features\\Functions.cs",
               "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Features\\Functions.cs",
               "RelativeToolTip": "Features\\Functions.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAhwCIAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAANAAAAAAAAAAAAAkwN4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T21:39:54.966Z",
+              "WhenOpened": "2025-02-01T20:05:26.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "States.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\States.cs",
-              "RelativeDocumentMoniker": "States.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\States.cs",
-              "RelativeToolTip": "States.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Aimbot_UC.cs",
+              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Aimbot_UC.cs",
+              "RelativeDocumentMoniker": "UserControls\\Aimbot_UC.cs",
+              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Aimbot_UC.cs",
+              "RelativeToolTip": "UserControls\\Aimbot_UC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T20:54:46.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Offsets.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Offsets.cs",
-              "RelativeDocumentMoniker": "Offsets.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Offsets.cs",
-              "RelativeToolTip": "Offsets.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T20:54:44.603Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T20:45:05.494Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwB0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T20:45:01.938Z",
+              "WhenOpened": "2025-02-01T20:01:44.422Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\Login.cs [Design]",
-              "RelativeToolTip": "Login.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "Misc_UC.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs",
+              "RelativeDocumentMoniker": "UserControls\\Misc_UC.cs",
+              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Misc_UC.cs [Design]",
+              "RelativeToolTip": "UserControls\\Misc_UC.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-30T20:44:13.399Z"
+              "WhenOpened": "2025-02-01T19:55:48.966Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Aimbot_UC.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Aimbot_UC.cs",
+              "RelativeDocumentMoniker": "UserControls\\Aimbot_UC.cs",
+              "ToolTip": "C:\\Users\\danya\\Documents\\GitHub\\Quasar-Counter-Strike-Source\\Quasar\\UserControls\\Aimbot_UC.cs [Design]",
+              "RelativeToolTip": "UserControls\\Aimbot_UC.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-01T19:49:10.1Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

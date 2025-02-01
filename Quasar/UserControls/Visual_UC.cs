@@ -1,5 +1,5 @@
 ﻿using NAudio.Wave;
-using static Quasar.States;
+using static Quasar.Scripts.States;
 
 namespace Quasar.UserControls
 {

@@ -32,7 +32,7 @@
             ui_panel = new Panel();
             unhook_button = new Button();
             contact_button = new Button();
-            changer_button = new Button();
+            aimbot_button = new Button();
             misc_button = new Button();
             visual_button = new Button();
             logo_picture = new PictureBox();
@@ -48,7 +48,7 @@
             ui_panel.BackColor = Color.FromArgb(25, 25, 25);
             ui_panel.Controls.Add(unhook_button);
             ui_panel.Controls.Add(contact_button);
-            ui_panel.Controls.Add(changer_button);
+            ui_panel.Controls.Add(aimbot_button);
             ui_panel.Controls.Add(misc_button);
             ui_panel.Controls.Add(visual_button);
             ui_panel.Controls.Add(logo_picture);
@@ -83,17 +83,17 @@
             contact_button.UseVisualStyleBackColor = false;
             contact_button.Click += contact_button_Click;
             // 
-            // changer_button
+            // aimbot_button
             // 
-            changer_button.BackColor = Color.FromArgb(40, 40, 40);
-            changer_button.FlatStyle = FlatStyle.Flat;
-            changer_button.Location = new Point(369, 28);
-            changer_button.Name = "changer_button";
-            changer_button.Size = new Size(119, 32);
-            changer_button.TabIndex = 4;
-            changer_button.Text = "Changer";
-            changer_button.UseVisualStyleBackColor = false;
-            changer_button.Click += changer_button_Click;
+            aimbot_button.BackColor = Color.FromArgb(40, 40, 40);
+            aimbot_button.FlatStyle = FlatStyle.Flat;
+            aimbot_button.Location = new Point(369, 28);
+            aimbot_button.Name = "aimbot_button";
+            aimbot_button.Size = new Size(119, 32);
+            aimbot_button.TabIndex = 4;
+            aimbot_button.Text = "Aimbot";
+            aimbot_button.UseVisualStyleBackColor = false;
+            aimbot_button.Click += aimbot_button_Click;
             // 
             // misc_button
             // 
@@ -174,7 +174,7 @@
         private Button misc_button;
         private Button unhook_button;
         private Button contact_button;
-        private Button changer_button;
+        private Button aimbot_button;
         private Panel container_panel;
     }
 }

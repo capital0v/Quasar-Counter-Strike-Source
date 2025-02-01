@@ -2,6 +2,7 @@ using Quasar.Features;
 using Quasar.UserControls;
 using NAudio.Wave;
 using System.Runtime.InteropServices;
+using Quasar.Scripts;
 
 namespace Quasar
 {
@@ -40,7 +41,7 @@ namespace Quasar
 
         private Visual_UC _visualUC = new Visual_UC();
         private Contacts_UC _contactsUC = new Contacts_UC();
-        private Changer_UC _changerUC;
+        private Aimbot_UC _aimbotUC;
         private Misc_UC _miscUC;
         public CheatMenu(bool windowed)
         {
@@ -49,7 +50,7 @@ namespace Quasar
             _functions.Inject();
             AddUserControl(_visualUC);
             _miscUC = new Misc_UC(_functions);
-            _changerUC = new Changer_UC(_functions);
+            _aimbotUC = new Aimbot_UC(_functions);
 
             if (windowed)
             {
@@ -147,9 +148,9 @@ namespace Quasar
             AddUserControl(_contactsUC);
         }
 
-        private void changer_button_Click(object sender, EventArgs e)
+        private void aimbot_button_Click(object sender, EventArgs e)
         {
-            AddUserControl(_changerUC);
+            AddUserControl(_aimbotUC);
         }
     }
 }

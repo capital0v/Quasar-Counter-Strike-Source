@@ -1,7 +1,8 @@
 ﻿using Capitalov;
+using System.Numerics;
 using System.Runtime.InteropServices;
-using static Quasar.Offsets;
-using static Quasar.States;
+using static Quasar.Scripts.Offsets;
+using static Quasar.Scripts.States;
 
 namespace Quasar.Features
 {
@@ -34,9 +35,13 @@ namespace Quasar.Features
 
         private MemoryRaider _memory = new MemoryRaider();
 
+        private List<Entity> _entities = new List<Entity>();
+
         private nint _client, _engine, _server, _materialsystem, _steam;
 
         private IntPtr _localPlayer;
+
+        public static string targetLevel = string.Empty;
 
         public void Inject()
         {
@@ -72,6 +77,7 @@ namespace Quasar.Features
                 DrawTracers();
                 DrawShadowFrame();
                 DrawLowResolution();
+                Aimbot();
 
                 Thread.Sleep(1);
             }
@@ -87,6 +93,7 @@ namespace Quasar.Features
             while (true)
             {
                 _memory.Write<int>(_engine + sv_cheats, 1);
+
                 Thread.Sleep(500);
             }
         }
@@ -119,22 +126,96 @@ namespace Quasar.Features
             }
         }
 
+        private void Aimbot()
+        {
+            if (aimbotEnabled)
+            {
+                Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+                int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
+
+                for (int i = 0; i < 32; i++)
+                {
+                    IntPtr entity = _memory.Read<int>(_client + (dwEntityList + (i - 1) * 0x10));
+
+                    if (entity > 0)
+                    {
+                        int health = _memory.Read<int>(entity + m_iHealth);
+                        int team = _memory.Read<int>(entity + m_iTeamNum);
+
+                        if (health > 1 && team != player_team)
+                        {
+                            Entity ent = new Entity();
+
+                            ent.Address = entity;
+                            ent.Health = health;
+                            ent.Team = team;
+                            ent.Position = _memory.ReadVector(ent.Address + m_vecPosition);
+                            ent.Distance = Vector3.Distance(player_pos, ent.Position);
+
+                            switch (targetLevel)
+                            {
+                                case "Neck":
+                                    ent.Position += new Vector3(0, 0, -3);
+                                    break;
+                                case "Body":
+                                    ent.Position += new Vector3(0, 0, -15);
+                                    break;
+                                case "Legs":
+                                    ent.Position += new Vector3(0, 0, -30);
+                                    break;
+                            }
+
+                            _entities.Add(ent);
+                        }
+                    }
+                }
+
+                _entities = _entities.OrderBy(e => e.Distance).ToList();
+
+                if (_entities.Count > 0)
+                {
+                    Vector2 angles = CalculateAngles(player_pos, _entities[0].Position);
+                    Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
+
+                    _memory.WriteVector(_engine + viewangles_y, newAngles);
+                }
+
+                _entities.Clear();
+            }
+        }
+
+        private Vector2 CalculateAngles(Vector3 from, Vector3 to)
+        {
+            float yaw, pitch;
+
+            float x = to.X - from.X;
+            float y = to.Y - from.Y;
+            float z = to.Z - from.Z;
+
+            yaw = (float)(Math.Atan2(y, x) * 180 / Math.PI);
+
+            double distance = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+            pitch = -(float)(Math.Atan2(z, distance) * 180 / Math.PI);
+
+            return new Vector2(yaw, pitch);
+        }
+
         private void Triggerbot()
         {
             if (triggerbotEnabled)
             {
                 int crosshair = _memory.Read<int>(_localPlayer + crosshairID);
 
-                if (crosshair != 0 && crosshair <= 64)
+                if (crosshair != 0 && crosshair <= 32)
                 {
                     int entity = _memory.Read<int>(_client + (dwEntityList + (crosshair - 1) * 0x10));
 
                     if (entity != 0)
                     {
-                        int enemyTeam = _memory.Read<int>(entity + m_iTeamNum);
-                        int playerTeam = _memory.Read<int>(_localPlayer + m_iTeamNum);
+                        int enemy_team = _memory.Read<int>(entity + m_iTeamNum);
+                        int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
 
-                        if (playerTeam != enemyTeam)
+                        if (player_team != enemy_team)
                         {
                             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 
