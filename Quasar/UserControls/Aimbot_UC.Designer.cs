@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aimbot_UC));
             ui_label = new Label();
             ui_panel = new Panel();
+            mouse_checkbox = new CheckBox();
             ui2_label = new Label();
             bone_combo = new ComboBox();
             aimbot_checkbox = new CheckBox();
+            ui2_panel = new Panel();
+            preview_picture = new PictureBox();
+            label1 = new Label();
             ui_panel.SuspendLayout();
+            ui2_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)preview_picture).BeginInit();
             SuspendLayout();
             // 
             // ui_label
@@ -48,18 +55,30 @@
             // ui_panel
             // 
             ui_panel.BackColor = Color.FromArgb(40, 40, 40);
+            ui_panel.Controls.Add(mouse_checkbox);
             ui_panel.Controls.Add(ui2_label);
             ui_panel.Controls.Add(bone_combo);
             ui_panel.Controls.Add(aimbot_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 345);
+            ui_panel.Size = new Size(335, 356);
             ui_panel.TabIndex = 10;
+            // 
+            // mouse_checkbox
+            // 
+            mouse_checkbox.AutoSize = true;
+            mouse_checkbox.Location = new Point(14, 45);
+            mouse_checkbox.Name = "mouse_checkbox";
+            mouse_checkbox.Size = new Size(308, 26);
+            mouse_checkbox.TabIndex = 15;
+            mouse_checkbox.Text = "Only when the button is pressed";
+            mouse_checkbox.UseVisualStyleBackColor = true;
+            mouse_checkbox.CheckedChanged += mouse_checkbox_CheckedChanged;
             // 
             // ui2_label
             // 
             ui2_label.AutoSize = true;
-            ui2_label.Location = new Point(14, 53);
+            ui2_label.Location = new Point(14, 80);
             ui2_label.Name = "ui2_label";
             ui2_label.Size = new Size(115, 22);
             ui2_label.TabIndex = 14;
@@ -69,7 +88,7 @@
             // 
             bone_combo.FormattingEnabled = true;
             bone_combo.Items.AddRange(new object[] { "Head", "Neck", "Body", "Legs" });
-            bone_combo.Location = new Point(145, 53);
+            bone_combo.Location = new Point(145, 80);
             bone_combo.Name = "bone_combo";
             bone_combo.Size = new Size(121, 27);
             bone_combo.TabIndex = 1;
@@ -87,10 +106,40 @@
             aimbot_checkbox.UseVisualStyleBackColor = true;
             aimbot_checkbox.CheckedChanged += aimbot_checkbox_CheckedChanged;
             // 
+            // ui2_panel
+            // 
+            ui2_panel.BackColor = Color.FromArgb(40, 40, 40);
+            ui2_panel.Controls.Add(preview_picture);
+            ui2_panel.Location = new Point(444, 66);
+            ui2_panel.Name = "ui2_panel";
+            ui2_panel.Size = new Size(335, 356);
+            ui2_panel.TabIndex = 15;
+            // 
+            // preview_picture
+            // 
+            preview_picture.Image = (Image)resources.GetObject("preview_picture.Image");
+            preview_picture.Location = new Point(43, 12);
+            preview_picture.Name = "preview_picture";
+            preview_picture.Size = new Size(279, 341);
+            preview_picture.SizeMode = PictureBoxSizeMode.Zoom;
+            preview_picture.TabIndex = 0;
+            preview_picture.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(444, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 22);
+            label1.TabIndex = 16;
+            label1.Text = "Preview";
+            // 
             // Aimbot_UC
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(30, 30, 30);
+            Controls.Add(label1);
+            Controls.Add(ui2_panel);
             Controls.Add(ui_label);
             Controls.Add(ui_panel);
             Font = new Font("Century Gothic", 13F, FontStyle.Bold);
@@ -101,6 +150,8 @@
             Size = new Size(808, 442);
             ui_panel.ResumeLayout(false);
             ui_panel.PerformLayout();
+            ui2_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)preview_picture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,5 +163,9 @@
         private CheckBox aimbot_checkbox;
         private ComboBox bone_combo;
         private Label ui2_label;
+        private Panel ui2_panel;
+        private Label label1;
+        private PictureBox preview_picture;
+        private CheckBox mouse_checkbox;
     }
 }

@@ -42,6 +42,7 @@ namespace Quasar.Features
         private IntPtr _localPlayer;
 
         public static string targetLevel = string.Empty;
+        public static bool mousePressed = false;
 
         public void Inject()
         {
@@ -177,7 +178,17 @@ namespace Quasar.Features
                     Vector2 angles = CalculateAngles(player_pos, _entities[0].Position);
                     Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
 
-                    _memory.WriteVector(_engine + viewangles_y, newAngles);
+                    if (mousePressed)
+                    {
+                        if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
+                        {
+                            _memory.WriteVector(_engine + viewangles_y, newAngles);
+                        }
+                    }
+                    else
+                    {
+                        _memory.WriteVector(_engine + viewangles_y, newAngles);
+                    }
                 }
 
                 _entities.Clear();

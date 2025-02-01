@@ -124,4 +124,16 @@
   <data name="Github" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Social Medias\Github.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="aim1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Preview\aim1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aim2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Preview\aim2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aim3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Preview\aim3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aim4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Preview\aim4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

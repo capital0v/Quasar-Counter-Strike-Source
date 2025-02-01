@@ -21,6 +21,27 @@ namespace Quasar.UserControls
         private void bone_combo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Functions.targetLevel = bone_combo.Text;
+
+            switch (bone_combo.Text)
+            {
+                case "Head":
+                    preview_picture.Image = Properties.Resources.aim1;
+                    break;
+                case "Neck":
+                    preview_picture.Image = Properties.Resources.aim2;
+                    break;
+                case "Body":
+                    preview_picture.Image = Properties.Resources.aim3;
+                    break;
+                case "Legs":
+                    preview_picture.Image = Properties.Resources.aim4;
+                    break;
+            }
+        }
+
+        private void mouse_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Functions.mousePressed = mouse_checkbox.Checked;
         }
     }
 }
