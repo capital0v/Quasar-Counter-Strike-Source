@@ -1,8 +1,8 @@
-using Quasar.Features;
 using Quasar.UserControls;
-using NAudio.Wave;
+using static Quasar.Scripts.SoundManager;
 using System.Runtime.InteropServices;
 using Quasar.Scripts;
+using Quasar.Scripts.Features;
 
 namespace Quasar
 {
@@ -41,8 +41,9 @@ namespace Quasar
 
         private Visual_UC _visualUC = new Visual_UC();
         private Contacts_UC _contactsUC = new Contacts_UC();
-        private Aimbot_UC _aimbotUC;
+        private Combat_UC _combatUC;
         private Misc_UC _miscUC;
+
         public CheatMenu(bool windowed)
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace Quasar
             _functions.Inject();
             AddUserControl(_visualUC);
             _miscUC = new Misc_UC(_functions);
-            _aimbotUC = new Aimbot_UC(_functions);
+            _combatUC = new Combat_UC(_functions);
 
             if (windowed)
             {
@@ -97,21 +98,6 @@ namespace Quasar
             }
         }
 
-        private void PlaySound(string audioFilePath)
-        {
-            using (var audioFile = new AudioFileReader(audioFilePath))
-            using (var outputDevice = new WaveOutEvent())
-            {
-                outputDevice.Init(audioFile);
-                outputDevice.Play();
-
-                while (outputDevice.PlaybackState == PlaybackState.Playing)
-                {
-                    System.Threading.Thread.Sleep(1);
-                }
-            }
-        }
-
         private void AddUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -150,7 +136,7 @@ namespace Quasar
 
         private void aimbot_button_Click(object sender, EventArgs e)
         {
-            AddUserControl(_aimbotUC);
+            AddUserControl(_combatUC);
         }
     }
 }

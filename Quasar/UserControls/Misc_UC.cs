@@ -1,5 +1,5 @@
-﻿using NAudio.Wave;
-using Quasar.Features;
+﻿using static Quasar.Scripts.SoundManager;
+using Quasar.Scripts.Features;
 using static Quasar.Scripts.States;
 
 namespace Quasar.UserControls
@@ -16,21 +16,6 @@ namespace Quasar.UserControls
             _functions = functions;
         }
 
-        private void PlaySound(string audioFilePath)
-        {
-            using (var audioFile = new AudioFileReader(audioFilePath))
-            using (var outputDevice = new WaveOutEvent())
-            {
-                outputDevice.Init(audioFile);
-                outputDevice.Play();
-
-                while (outputDevice.PlaybackState == PlaybackState.Playing)
-                {
-                    System.Threading.Thread.Sleep(1);
-                }
-            }
-        }
-
         private void antiflash_checkbox_CheckedChanged(object sender, EventArgs e)
         {
             antiflashEnabled = antiflash_checkbox.Checked;
@@ -40,12 +25,6 @@ namespace Quasar.UserControls
         private void bunnyhop_checkbox_CheckedChanged(object sender, EventArgs e)
         {
             bunnyhopEnabled = bunnyhop_checkbox.Checked;
-            PlaySound(_menuSound);
-        }
-
-        private void triggerbot_checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-            triggerbotEnabled = triggerbot_checkbox.Checked;
             PlaySound(_menuSound);
         }
 

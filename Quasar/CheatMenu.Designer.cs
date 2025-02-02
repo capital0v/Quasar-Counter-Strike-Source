@@ -91,7 +91,7 @@
             aimbot_button.Name = "aimbot_button";
             aimbot_button.Size = new Size(119, 32);
             aimbot_button.TabIndex = 4;
-            aimbot_button.Text = "Aimbot";
+            aimbot_button.Text = "Combat";
             aimbot_button.UseVisualStyleBackColor = false;
             aimbot_button.Click += aimbot_button_Click;
             // 

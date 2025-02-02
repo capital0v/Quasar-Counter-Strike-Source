@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             ui_panel = new Panel();
-            triggerbot_checkbox = new CheckBox();
             bunnyhop_checkbox = new CheckBox();
             antiflash_checkbox = new CheckBox();
             ui_label = new Label();
@@ -55,24 +54,12 @@
             // ui_panel
             // 
             ui_panel.BackColor = Color.FromArgb(40, 40, 40);
-            ui_panel.Controls.Add(triggerbot_checkbox);
             ui_panel.Controls.Add(bunnyhop_checkbox);
             ui_panel.Controls.Add(antiflash_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 117);
+            ui_panel.Size = new Size(335, 88);
             ui_panel.TabIndex = 8;
-            // 
-            // triggerbot_checkbox
-            // 
-            triggerbot_checkbox.AutoSize = true;
-            triggerbot_checkbox.Location = new Point(14, 75);
-            triggerbot_checkbox.Name = "triggerbot_checkbox";
-            triggerbot_checkbox.Size = new Size(118, 26);
-            triggerbot_checkbox.TabIndex = 2;
-            triggerbot_checkbox.Text = "Triggerbot";
-            triggerbot_checkbox.UseVisualStyleBackColor = true;
-            triggerbot_checkbox.CheckedChanged += triggerbot_checkbox_CheckedChanged;
             // 
             // bunnyhop_checkbox
             // 
@@ -167,7 +154,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 202);
+            label1.Location = new Point(24, 174);
             label1.Name = "label1";
             label1.Size = new Size(88, 22);
             label1.TabIndex = 14;
@@ -182,9 +169,9 @@
             panel1.Controls.Add(nickname_button);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(nickname_textbox);
-            panel1.Location = new Point(24, 242);
+            panel1.Location = new Point(24, 214);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 187);
+            panel1.Size = new Size(335, 215);
             panel1.TabIndex = 13;
             // 
             // clantag_button
@@ -280,7 +267,6 @@
         private CheckBox antiflash_checkbox;
         private CheckBox wireframe_checkbox;
         private CheckBox bunnyhop_checkbox;
-        private CheckBox triggerbot_checkbox;
         private Label ui_label;
         private Label ui2_label;
         private Panel ui2_panel;

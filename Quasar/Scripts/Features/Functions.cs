@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using static Quasar.Scripts.Offsets;
 using static Quasar.Scripts.States;
 
-namespace Quasar.Features
+namespace Quasar.Scripts.Features
 {
     internal class Functions
     {
@@ -16,6 +16,8 @@ namespace Quasar.Features
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
         private const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
         private const uint MOUSEEVENTF_LEFTUP = 0x0004;
+        private const uint MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        private const uint MOUSEEVENTF_RIGHTUP = 0x0010;
         #endregion
 
         private static readonly Dictionary<int, string> Teams = new Dictionary<int, string>
@@ -39,7 +41,7 @@ namespace Quasar.Features
 
         private nint _client, _engine, _server, _materialsystem, _steam;
 
-        private IntPtr _localPlayer;
+        private nint _localPlayer;
 
         public static string targetLevel = string.Empty;
         public static bool mousePressed = false;
@@ -66,6 +68,7 @@ namespace Quasar.Features
             {
                 _localPlayer = _memory.ReadPointer(_client, dwLocalPlayer);
 
+                GetEntityList();
                 Bunnyhop();
                 Wallhack();
                 ShowImpact();
@@ -78,7 +81,6 @@ namespace Quasar.Features
                 DrawTracers();
                 DrawShadowFrame();
                 DrawLowResolution();
-                Aimbot();
 
                 Thread.Sleep(1);
             }
@@ -86,14 +88,14 @@ namespace Quasar.Features
 
         private void Wallhack()
         {
-            _memory.Write<int>(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
+            _memory.Write(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
         }
 
         private void EnableSvCheats()
         {
             while (true)
             {
-                _memory.Write<int>(_engine + sv_cheats, 1);
+                _memory.Write(_engine + sv_cheats, 1);
 
                 Thread.Sleep(500);
             }
@@ -107,91 +109,131 @@ namespace Quasar.Features
 
                 if (GetAsyncKeyState(Keys.Space) < 0 && (flags == 257 || flags == 263))
                 {
-                    _memory.Write<int>(_client + dwForceJump, 5);
+                    _memory.Write(_client + dwForceJump, 5);
                     Thread.Sleep(1);
-                    _memory.Write<int>(_client + dwForceJump, 4);
+                    _memory.Write(_client + dwForceJump, 4);
                 }
             }
         }
 
         private void ShowImpact()
         {
-            _memory.Write<int>(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
+            _memory.Write(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
         }
 
         private void Antiflash()
         {
             if (antiflashEnabled)
             {
-                _memory.Write<int>(_localPlayer + fMaxFlashAlpha, 0);
+                _memory.Write(_localPlayer + fMaxFlashAlpha, 0);
             }
         }
 
-        private void Aimbot()
+        private void Knifebot(List<Entity> entities)
         {
-            if (aimbotEnabled)
+            string weapon = _memory.ReadString(_client + weaponName, 5);
+
+            if (weapon == "knife")
             {
-                Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
-                int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
+                entities = _entities;
 
-                for (int i = 0; i < 32; i++)
+                if (entities.Count > 0)
                 {
-                    IntPtr entity = _memory.Read<int>(_client + (dwEntityList + (i - 1) * 0x10));
+                    Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+                    entities = _entities.OrderBy(e => e.Distance).ToList();
 
-                    if (entity > 0)
+                    float distance = entities[0].Distance;
+
+                    if (distance <= 63)
                     {
-                        int health = _memory.Read<int>(entity + m_iHealth);
-                        int team = _memory.Read<int>(entity + m_iTeamNum);
+                        mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
 
-                        if (health > 1 && team != player_team)
-                        {
-                            Entity ent = new Entity();
+                        Thread.Sleep(1);
 
-                            ent.Address = entity;
-                            ent.Health = health;
-                            ent.Team = team;
-                            ent.Position = _memory.ReadVector(ent.Address + m_vecPosition);
-                            ent.Distance = Vector3.Distance(player_pos, ent.Position);
-
-                            switch (targetLevel)
-                            {
-                                case "Neck":
-                                    ent.Position += new Vector3(0, 0, -3);
-                                    break;
-                                case "Body":
-                                    ent.Position += new Vector3(0, 0, -15);
-                                    break;
-                                case "Legs":
-                                    ent.Position += new Vector3(0, 0, -30);
-                                    break;
-                            }
-
-                            _entities.Add(ent);
-                        }
+                        mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
                     }
                 }
+            }
+        }
 
-                _entities = _entities.OrderBy(e => e.Distance).ToList();
+        private void GetEntityList()
+        {
+            Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+            int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
 
-                if (_entities.Count > 0)
+            for (int i = 0; i < 32; i++)
+            {
+                nint entity = _memory.Read<int>(_client + (dwEntityList + (i - 1) * 0x10));
+
+                if (entity > 0)
                 {
-                    Vector2 angles = CalculateAngles(player_pos, _entities[0].Position);
-                    Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
+                    int health = _memory.Read<int>(entity + m_iHealth);
+                    int team = _memory.Read<int>(entity + m_iTeamNum);
 
-                    if (mousePressed)
+                    if (health > 1 && team != player_team)
                     {
-                        if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
-                        {
-                            _memory.WriteVector(_engine + viewangles_y, newAngles);
-                        }
+                        Entity ent = new Entity();
+
+                        ent.Address = entity;
+                        ent.Health = health;
+                        ent.Team = team;
+                        ent.Position = _memory.ReadVector(ent.Address + m_vecPosition);
+                        ent.Distance = Vector3.Distance(player_pos, ent.Position);
+
+                        _entities.Add(ent);
                     }
-                    else
+                }
+            }
+
+            if (aimbotEnabled)
+            {
+                Aimbot(_entities);
+            }
+
+            if (knifebotEnabled)
+            {
+                Knifebot(_entities);
+            }
+
+            _entities.Clear();
+        }
+
+        private void Aimbot(List<Entity> entities)
+        {
+            entities = _entities;
+
+            if (entities.Count > 0)
+            {
+                Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+                entities = _entities.OrderBy(e => e.Distance).ToList();
+
+                switch (targetLevel)
+                {
+                    case "Neck":
+                        entities[0].Position += new Vector3(0, 0, -3);
+                        break;
+                    case "Body":
+                        entities[0].Position += new Vector3(0, 0, -15);
+                        break;
+                    case "Legs":
+                        entities[0].Position += new Vector3(0, 0, -30);
+                        break;
+                }
+
+                Vector2 angles = CalculateAngles(player_pos, entities[0].Position);
+                Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
+
+                if (mousePressed)
+                {
+                    if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
                     {
                         _memory.WriteVector(_engine + viewangles_y, newAngles);
                     }
                 }
-
-                _entities.Clear();
+                else
+                {
+                    _memory.WriteVector(_engine + viewangles_y, newAngles);
+                }
             }
         }
 
@@ -243,11 +285,11 @@ namespace Quasar.Features
         {
             if (fullbrightEnabled)
             {
-                _memory.Write<int>(_materialsystem + mat_fullbright, 1);
+                _memory.Write(_materialsystem + mat_fullbright, 1);
             }
             else if (!whiteTextureEnabled)
             {
-                _memory.Write<int>(_materialsystem + mat_fullbright, 0);
+                _memory.Write(_materialsystem + mat_fullbright, 0);
             }
         }
 
@@ -255,37 +297,37 @@ namespace Quasar.Features
         {
             if (whiteTextureEnabled)
             {
-                _memory.Write<int>(_materialsystem + mat_fullbright, 2);
+                _memory.Write(_materialsystem + mat_fullbright, 2);
             }
             else if (!fullbrightEnabled)
             {
-                _memory.Write<int>(_materialsystem + mat_fullbright, 0);
+                _memory.Write(_materialsystem + mat_fullbright, 0);
             }
         }
 
         private void NoSmoke()
         {
-            _memory.Write<int>(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
+            _memory.Write(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
         }
 
         private void DrawHitboxes()
         {
-            _memory.Write<int>(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
+            _memory.Write(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
         }
 
         private void DrawTracers()
         {
-            _memory.Write<int>(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
+            _memory.Write(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
         }
 
         private void DrawShadowFrame()
         {
-            _memory.Write<int>(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
+            _memory.Write(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
         }
 
         private void DrawLowResolution()
         {
-            _memory.Write<int>(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
+            _memory.Write(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
 
         public string GetInformation()
