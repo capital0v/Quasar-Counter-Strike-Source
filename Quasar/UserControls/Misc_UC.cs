@@ -67,5 +67,11 @@ namespace Quasar.UserControls
         {
             _functions.ChangeClantag(clantag_textbox.Text);
         }
+
+        private void thirdperson_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            thirdpersonEnabled = thirdperson_checkbox.Checked;
+            _functions.Thirdperson();
+        }
     }
 }

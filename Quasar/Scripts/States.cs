@@ -17,6 +17,7 @@
         public static bool getInformationEnabled;
         public static bool aimbotEnabled;
         public static bool knifebotEnabled;
+        public static bool thirdpersonEnabled;
 
         public static void DisableAll()
         {
@@ -35,6 +36,7 @@
             getInformationEnabled = false;
             aimbotEnabled = false;
             knifebotEnabled = false;
+            thirdpersonEnabled = false;
         }
     }
 }

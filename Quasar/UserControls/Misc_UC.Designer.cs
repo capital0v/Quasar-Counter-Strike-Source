@@ -46,6 +46,7 @@
             nickname_button = new Button();
             label2 = new Label();
             nickname_textbox = new TextBox();
+            thirdperson_checkbox = new CheckBox();
             ui_panel.SuspendLayout();
             ui2_panel.SuspendLayout();
             panel1.SuspendLayout();
@@ -54,11 +55,12 @@
             // ui_panel
             // 
             ui_panel.BackColor = Color.FromArgb(40, 40, 40);
+            ui_panel.Controls.Add(thirdperson_checkbox);
             ui_panel.Controls.Add(bunnyhop_checkbox);
             ui_panel.Controls.Add(antiflash_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 88);
+            ui_panel.Size = new Size(335, 123);
             ui_panel.TabIndex = 8;
             // 
             // bunnyhop_checkbox
@@ -154,7 +156,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 174);
+            label1.Location = new Point(24, 202);
             label1.Name = "label1";
             label1.Size = new Size(88, 22);
             label1.TabIndex = 14;
@@ -169,9 +171,9 @@
             panel1.Controls.Add(nickname_button);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(nickname_textbox);
-            panel1.Location = new Point(24, 214);
+            panel1.Location = new Point(24, 242);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 215);
+            panel1.Size = new Size(335, 187);
             panel1.TabIndex = 13;
             // 
             // clantag_button
@@ -232,6 +234,17 @@
             nickname_textbox.TabIndex = 15;
             nickname_textbox.Text = "...";
             // 
+            // thirdperson_checkbox
+            // 
+            thirdperson_checkbox.AutoSize = true;
+            thirdperson_checkbox.Location = new Point(12, 75);
+            thirdperson_checkbox.Name = "thirdperson_checkbox";
+            thirdperson_checkbox.Size = new Size(131, 26);
+            thirdperson_checkbox.TabIndex = 2;
+            thirdperson_checkbox.Text = "Thirdperson";
+            thirdperson_checkbox.UseVisualStyleBackColor = true;
+            thirdperson_checkbox.CheckedChanged += thirdperson_checkbox_CheckedChanged;
+            // 
             // Misc_UC
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -282,5 +295,6 @@
         private Button nickname_button;
         private Label label2;
         private TextBox nickname_textbox;
+        private CheckBox thirdperson_checkbox;
     }
 }

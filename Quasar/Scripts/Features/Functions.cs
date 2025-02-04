@@ -37,6 +37,8 @@ namespace Quasar.Scripts.Features
 
         private MemoryRaider _memory = new MemoryRaider();
 
+        private static OffsetsData? _offsets;
+
         private List<Entity> _entities = new List<Entity>();
 
         private nint _client, _engine, _server, _materialsystem, _steam;
@@ -48,6 +50,7 @@ namespace Quasar.Scripts.Features
 
         public void Inject()
         {
+            _offsets = GetOffsets("34");
             _memory.Inject("hl2");
             _client = _memory.GetModuleBase("client.dll");
             _engine = _memory.GetModuleBase("engine.dll");
@@ -66,7 +69,7 @@ namespace Quasar.Scripts.Features
         {
             while (true)
             {
-                _localPlayer = _memory.ReadPointer(_client, dwLocalPlayer);
+                _localPlayer = _memory.ReadPointer(_client, _offsets.Player.dwLocalPlayer);
 
                 GetEntityList();
                 Bunnyhop();
@@ -81,6 +84,7 @@ namespace Quasar.Scripts.Features
                 DrawTracers();
                 DrawShadowFrame();
                 DrawLowResolution();
+                Thirdperson();
 
                 Thread.Sleep(1);
             }
@@ -88,14 +92,14 @@ namespace Quasar.Scripts.Features
 
         private void Wallhack()
         {
-            _memory.Write(_client + r_drawothermodels, wallhackEnabled ? 2 : 1);
+            _memory.Write(_client + _offsets.Client.r_drawothermodels, wallhackEnabled ? 2 : 1);
         }
 
         private void EnableSvCheats()
         {
             while (true)
             {
-                _memory.Write(_engine + sv_cheats, 1);
+                _memory.Write(_engine + _offsets.Engine.sv_cheats, 1);
 
                 Thread.Sleep(500);
             }
@@ -105,33 +109,33 @@ namespace Quasar.Scripts.Features
         {
             if (bunnyhopEnabled)
             {
-                int flags = _memory.Read<int>(_localPlayer + m_fFlags);
+                int flags = _memory.Read<int>(_localPlayer + _offsets.Player.m_fFlags);
 
                 if (GetAsyncKeyState(Keys.Space) < 0 && (flags == 257 || flags == 263))
                 {
-                    _memory.Write(_client + dwForceJump, 5);
+                    _memory.Write(_client + _offsets.Player.dwForceJump, 5);
                     Thread.Sleep(1);
-                    _memory.Write(_client + dwForceJump, 4);
+                    _memory.Write(_client + _offsets.Player.dwForceJump, 4);
                 }
             }
         }
 
         private void ShowImpact()
         {
-            _memory.Write(_server + sv_showimpact, showimpactEnabled ? 1 : 0);
+            _memory.Write(_server + _offsets.Client.sv_showimpact, showimpactEnabled ? 1 : 0);
         }
 
         private void Antiflash()
         {
             if (antiflashEnabled)
             {
-                _memory.Write(_localPlayer + fMaxFlashAlpha, 0);
+                _memory.Write(_localPlayer + _offsets.Player.fMaxFlashAlpha, 0);
             }
         }
 
         private void Knifebot(List<Entity> entities)
         {
-            string weapon = _memory.ReadString(_client + weaponName, 5);
+            string weapon = _memory.ReadString(_client + _offsets.Client.weaponName, 5);
 
             if (weapon == "knife")
             {
@@ -139,7 +143,7 @@ namespace Quasar.Scripts.Features
 
                 if (entities.Count > 0)
                 {
-                    Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+                    Vector3 player_pos = _memory.ReadVector(_localPlayer + _offsets.Player.m_vecPosition);
                     entities = _entities.OrderBy(e => e.Distance).ToList();
 
                     float distance = entities[0].Distance;
@@ -158,17 +162,17 @@ namespace Quasar.Scripts.Features
 
         private void GetEntityList()
         {
-            Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
-            int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
+            Vector3 player_pos = _memory.ReadVector(_localPlayer + _offsets.Player.m_vecPosition);
+            int player_team = _memory.Read<int>(_localPlayer + _offsets.Player.m_iTeamNum);
 
             for (int i = 0; i < 32; i++)
             {
-                nint entity = _memory.Read<int>(_client + (dwEntityList + (i - 1) * 0x10));
+                nint entity = _memory.Read<int>(_client + (_offsets.Client.dwEntityList + (i - 1) * 0x10));
 
                 if (entity > 0)
                 {
-                    int health = _memory.Read<int>(entity + m_iHealth);
-                    int team = _memory.Read<int>(entity + m_iTeamNum);
+                    int health = _memory.Read<int>(entity + _offsets.Player.m_iHealth);
+                    int team = _memory.Read<int>(entity + _offsets.Player.m_iTeamNum);
 
                     if (health > 1 && team != player_team)
                     {
@@ -177,7 +181,7 @@ namespace Quasar.Scripts.Features
                         ent.Address = entity;
                         ent.Health = health;
                         ent.Team = team;
-                        ent.Position = _memory.ReadVector(ent.Address + m_vecPosition);
+                        ent.Position = _memory.ReadVector(ent.Address + _offsets.Player.m_vecPosition);
                         ent.Distance = Vector3.Distance(player_pos, ent.Position);
 
                         _entities.Add(ent);
@@ -204,7 +208,7 @@ namespace Quasar.Scripts.Features
 
             if (entities.Count > 0)
             {
-                Vector3 player_pos = _memory.ReadVector(_localPlayer + m_vecPosition);
+                Vector3 player_pos = _memory.ReadVector(_localPlayer + _offsets.Player.m_vecPosition);
                 entities = _entities.OrderBy(e => e.Distance).ToList();
 
                 switch (targetLevel)
@@ -227,12 +231,12 @@ namespace Quasar.Scripts.Features
                 {
                     if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
                     {
-                        _memory.WriteVector(_engine + viewangles_y, newAngles);
+                        _memory.WriteVector(_engine + _offsets.Engine.viewangles_y, newAngles);
                     }
                 }
                 else
                 {
-                    _memory.WriteVector(_engine + viewangles_y, newAngles);
+                    _memory.WriteVector(_engine + _offsets.Engine.viewangles_y, newAngles);
                 }
             }
         }
@@ -257,16 +261,16 @@ namespace Quasar.Scripts.Features
         {
             if (triggerbotEnabled)
             {
-                int crosshair = _memory.Read<int>(_localPlayer + crosshairID);
+                int crosshair = _memory.Read<int>(_localPlayer + _offsets.Player.crosshairID);
 
                 if (crosshair != 0 && crosshair <= 32)
                 {
-                    int entity = _memory.Read<int>(_client + (dwEntityList + (crosshair - 1) * 0x10));
+                    int entity = _memory.Read<int>(_client + (_offsets.Client.dwEntityList + (crosshair - 1) * 0x10));
 
                     if (entity != 0)
                     {
-                        int enemy_team = _memory.Read<int>(entity + m_iTeamNum);
-                        int player_team = _memory.Read<int>(_localPlayer + m_iTeamNum);
+                        int enemy_team = _memory.Read<int>(entity + _offsets.Player.m_iTeamNum);
+                        int player_team = _memory.Read<int>(_localPlayer + _offsets.Player.m_iTeamNum);
 
                         if (player_team != enemy_team)
                         {
@@ -285,11 +289,11 @@ namespace Quasar.Scripts.Features
         {
             if (fullbrightEnabled)
             {
-                _memory.Write(_materialsystem + mat_fullbright, 1);
+                _memory.Write(_materialsystem + _offsets.Engine.mat_fullbright, 1);
             }
             else if (!whiteTextureEnabled)
             {
-                _memory.Write(_materialsystem + mat_fullbright, 0);
+                _memory.Write(_materialsystem + _offsets.Engine.mat_fullbright, 0);
             }
         }
 
@@ -297,49 +301,49 @@ namespace Quasar.Scripts.Features
         {
             if (whiteTextureEnabled)
             {
-                _memory.Write(_materialsystem + mat_fullbright, 2);
+                _memory.Write(_materialsystem + _offsets.Engine.mat_fullbright, 2);
             }
             else if (!fullbrightEnabled)
             {
-                _memory.Write(_materialsystem + mat_fullbright, 0);
+                _memory.Write(_materialsystem + _offsets.Engine.mat_fullbright, 0);
             }
         }
 
         private void NoSmoke()
         {
-            _memory.Write(_client + r_drawparticles, nosmokeEnabled ? 0 : 1);
+            _memory.Write(_client + _offsets.Client.r_drawparticles, nosmokeEnabled ? 0 : 1);
         }
 
         private void DrawHitboxes()
         {
-            _memory.Write(_client + r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
+            _memory.Write(_client + _offsets.Client.r_drawrenderhitboxes, hitboxesEnabled ? 1 : 0);
         }
 
         private void DrawTracers()
         {
-            _memory.Write(_engine + r_visualizetracers, tracersEnabled ? 1 : 0);
+            _memory.Write(_engine + _offsets.Engine.r_visualizetracers, tracersEnabled ? 1 : 0);
         }
 
         private void DrawShadowFrame()
         {
-            _memory.Write(_engine + r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
+            _memory.Write(_engine + _offsets.Engine.r_shadowwireframe, shadowFrameEnabled ? 1 : 0);
         }
 
         private void DrawLowResolution()
         {
-            _memory.Write(_materialsystem + mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
+            _memory.Write(_materialsystem + _offsets.Engine.mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
 
         public string GetInformation()
         {
             if (getInformationEnabled)
             {
-                int flagsID = _memory.Read<int>(_localPlayer + m_fFlags);
-                int teamID = _memory.Read<int>(_localPlayer + m_iTeamNum);
-                int health = _memory.Read<int>(_localPlayer + m_iHealth);
-                int armor = _memory.Read<int>(_localPlayer + m_iArmor);
+                int flagsID = _memory.Read<int>(_localPlayer + _offsets.Player.m_fFlags);
+                int teamID = _memory.Read<int>(_localPlayer + _offsets.Player.m_iTeamNum);
+                int health = _memory.Read<int>(_localPlayer + _offsets.Player.m_iHealth);
+                int armor = _memory.Read<int>(_localPlayer + _offsets.Player.m_iArmor);
 
-                string weapon = _memory.ReadString(_client + weaponName, 15);
+                string weapon = _memory.ReadString(_client + _offsets.Client.weaponName, 15);
 
                 string team = Teams.TryGetValue(teamID, out var teamName) ? teamName : "Unknown Team";
                 string flag = Flags.TryGetValue(flagsID, out var flagName) ? flagName : "Unknown State";
@@ -352,14 +356,28 @@ namespace Quasar.Scripts.Features
 
         public void ChangeNickname(string newNickname)
         {
-            _memory.WriteString(_steam + nickname, "                                                        ");
-            _memory.WriteString(_steam + nickname, newNickname);
+            _memory.WriteString(_steam + _offsets.Steam.nickname, "                                                        ");
+            _memory.WriteString(_steam + _offsets.Steam.nickname, newNickname);
         }
 
         public void ChangeClantag(string newClantag)
         {
-            _memory.WriteString(_steam + clantag, "                                                        ");
-            _memory.WriteString(_steam + clantag, newClantag);
+            _memory.WriteString(_steam + _offsets.Steam.clantag, "                                                        ");
+            _memory.WriteString(_steam + _offsets.Steam.clantag, newClantag);
         }
+
+        public void Thirdperson()
+        {
+            if (thirdpersonEnabled)
+            {
+                _memory.Nop(_client + _offsets.Client.thirdpersonAddress, _offsets.Client.thirdpersonAddressBytes.Length);
+                _memory.Write(_client + _offsets.Client.thirdperson, 256);
+            }
+            else
+            {
+                _memory.Write(_client + _offsets.Client.thirdperson, 0);
+            }
+        }
+
     }
 }
