@@ -1,4 +1,4 @@
-# Quasar
+# Quasar 1.3.0
 **Cheat for Counter Strike Source**
 
 ![preview #1](Quasar/Assets/Images/1.png)
