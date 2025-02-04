@@ -75,6 +75,7 @@
             // 
             mouse_checkbox.AutoSize = true;
             mouse_checkbox.Location = new Point(14, 44);
+            mouse_checkbox.Location = new Point(14, 42);
             mouse_checkbox.Name = "mouse_checkbox";
             mouse_checkbox.Size = new Size(308, 26);
             mouse_checkbox.TabIndex = 15;

@@ -89,7 +89,7 @@ namespace Quasar.Scripts.Features
                 DrawShadowFrame();
                 DrawLowResolution();
                 Thirdperson();
-                Test();
+                AimLock();
 
                 Thread.Sleep(1);
             }
@@ -282,51 +282,54 @@ namespace Quasar.Scripts.Features
             }
         }
 
-        private void Test()
+        private void AimLock()
         {
-            int crosshair = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.crosshairID);
-
-            if (crosshair != 0 && crosshair <= 32)
+            if (aimlockEnabled)
             {
-                int entity = _memory.Read<int>(_client + (_offsets!.Client!.dwEntityList + (crosshair - 1) * 0x10));
+                int crosshair = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.crosshairID);
 
-                if (entity != 0)
+                if (crosshair != 0 && crosshair <= 32)
                 {
-                    int entity_team = _memory.Read<int>(entity + _offsets!.Player!.m_iTeamNum);
+                    int entity = _memory.Read<int>(_client + (_offsets!.Client!.dwEntityList + (crosshair - 1) * 0x10));
 
-                    if (_localPlayer.Team != entity_team)
+                    if (entity != 0)
                     {
-                        Entity enemy = new Entity();
-                        enemy.Address = entity;
-                        enemy.Position = _memory.ReadVector(enemy.Address + _offsets.Player.m_vecPosition);
-                        enemy.Distance = Vector3.Distance(_localPlayer.Position, enemy.Position);
+                        int entity_team = _memory.Read<int>(entity + _offsets!.Player!.m_iTeamNum);
 
-                        switch (targetLevel)
+                        if (_localPlayer.Team != entity_team)
                         {
-                            case "Neck":
-                                enemy.Position += new Vector3(0, 0, -3);
-                                break;
-                            case "Body":
-                                enemy.Position += new Vector3(0, 0, -15);
-                                break;
-                            case "Legs":
-                                enemy.Position += new Vector3(0, 0, -30);
-                                break;
-                        }
+                            Entity enemy = new Entity();
+                            enemy.Address = entity;
+                            enemy.Position = _memory.ReadVector(enemy.Address + _offsets.Player.m_vecPosition);
+                            enemy.Distance = Vector3.Distance(_localPlayer.Position, enemy.Position);
 
-                        Vector2 angles = CalculateAngles(_localPlayer.Position, enemy.Position);
-                        Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
+                            switch (targetLevel)
+                            {
+                                case "Neck":
+                                    enemy.Position += new Vector3(0, 0, -3);
+                                    break;
+                                case "Body":
+                                    enemy.Position += new Vector3(0, 0, -15);
+                                    break;
+                                case "Legs":
+                                    enemy.Position += new Vector3(0, 0, -30);
+                                    break;
+                            }
 
-                        if (mousePressed)
-                        {
-                            if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
+                            Vector2 angles = CalculateAngles(_localPlayer.Position, enemy.Position);
+                            Vector3 newAngles = new Vector3(angles.Y, angles.X, 0);
+
+                            if (mousePressed)
+                            {
+                                if ((GetAsyncKeyState(Keys.LButton) & 0x8000) != 0)
+                                {
+                                    _memory.WriteVector(_engine + _offsets!.Engine!.viewangles_y, newAngles);
+                                }
+                            }
+                            else
                             {
                                 _memory.WriteVector(_engine + _offsets!.Engine!.viewangles_y, newAngles);
                             }
-                        }
-                        else
-                        {
-                            _memory.WriteVector(_engine + _offsets!.Engine!.viewangles_y, newAngles);
                         }
                     }
                 }
