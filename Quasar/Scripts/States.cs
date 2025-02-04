@@ -16,6 +16,9 @@
         public static bool lowresolutionEnabled;
         public static bool getInformationEnabled;
         public static bool aimbotEnabled;
+        public static bool knifebotEnabled;
+        public static bool thirdpersonEnabled;
+        public static bool aimlockEnabled;
 
         public static void DisableAll()
         {
@@ -33,6 +36,9 @@
             lowresolutionEnabled = false;
             getInformationEnabled = false;
             aimbotEnabled = false;
+            knifebotEnabled = false;
+            thirdpersonEnabled = false;
+            aimlockEnabled = false;
         }
     }
 }

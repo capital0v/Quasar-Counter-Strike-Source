@@ -45,7 +45,6 @@ namespace Quasar.UserControls
 
             if (fullbright_checkbox.Checked && whiteTexture_checkbox.Checked)
             {
-                fullbright_checkbox.Checked = true;
                 whiteTexture_checkbox.Checked = false;
             }
             PlaySound(_menuSound);
@@ -58,7 +57,6 @@ namespace Quasar.UserControls
             if (fullbright_checkbox.Checked && whiteTexture_checkbox.Checked)
             {
                 fullbright_checkbox.Checked = false;
-                whiteTexture_checkbox.Checked = true;
             }
             PlaySound(_menuSound);
         }

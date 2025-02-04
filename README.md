@@ -1,8 +1,10 @@
 # Quasar
-**Cheat for Counter Strike Source V34**
+**Cheat for Counter Strike Source**
 
 ![preview #1](Quasar/Assets/Images/1.png)
 ![preview #2](Quasar/Assets/Images/2.png)
+![preview #2](Quasar/Assets/Images/3.png)
+![preview #2](Quasar/Assets/Images/4.png)
 
 ## Disclaimer
 <div style="text-align: center;">
