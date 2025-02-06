@@ -1,4 +1,4 @@
-# Vexium 1.3.0
+# Vexium 1.4.0
 
 <img src="Vexium/Assets/Logo.png" alt="Logo" width="200"/>
 
