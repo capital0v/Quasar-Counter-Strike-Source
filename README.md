@@ -1,6 +1,9 @@
 # Vexium 1.3.0
-![Logo](Vexium/Assets/Logo.png)
-**Cheat for Counter Strike Source**
+
+<img src="Vexium/Assets/Logo.png" alt="Logo" width="200"/>
+
+**External cheat for Counter Strike: Source**
+
 
 ![preview #1](Vexium/Assets/Images/1.png)
 ![preview #2](Vexium/Assets/Images/2.png)
