@@ -1,10 +1,11 @@
-# Quasar 1.3.0
+# Vexium 1.3.0
+![Logo](Vexium/Assets/Logo.png)
 **Cheat for Counter Strike Source**
 
-![preview #1](Quasar/Assets/Images/1.png)
-![preview #2](Quasar/Assets/Images/2.png)
-![preview #2](Quasar/Assets/Images/3.png)
-![preview #2](Quasar/Assets/Images/4.png)
+![preview #1](Vexium/Assets/Images/1.png)
+![preview #2](Vexium/Assets/Images/2.png)
+![preview #3](Vexium/Assets/Images/3.png)
+![preview #4](Vexium/Assets/Images/4.png)
 
 ## Disclaimer
 <div style="text-align: center;">
@@ -28,4 +29,4 @@ Follow the steps below to set up the project:
    Place the `Sounds` folder and the `Memory Raider x86.dll` file into the debug folder of your project.
 
 ## License
-[MIT](https://github.com/capital0v/Quasar-Counter-Strike-Source/blob/main/LICENSE)
+[MIT](https://github.com/capital0v/Vexium-Counter-Strike-Source/blob/main/LICENSE)
