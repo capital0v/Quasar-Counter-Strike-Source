@@ -9,6 +9,15 @@
     <strong>If you get caught cheating on VAC protected servers or competitive leagues, that is your responsibility, not mine. I am not responsible for your actions. The code is published for educational purposes only.</strong>
 </div>
 
+## What's new?
+- Added checks to see if a player is in chat or paused
+- Wireframe functions
+- "Contacts" changed to "Other"
+- Opportunity to get offsets  in "Other" panel
+- Code optimization
+
+## Images 
+
 ![preview #1](Vexium/Assets/Images/1.png)
 ![preview #2](Vexium/Assets/Images/2.png)
 ![preview #3](Vexium/Assets/Images/3.png)
