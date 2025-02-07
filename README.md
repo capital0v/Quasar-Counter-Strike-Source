@@ -13,7 +13,7 @@
 ![preview #2](Vexium/Assets/Images/2.png)
 ![preview #3](Vexium/Assets/Images/3.png)
 ![preview #4](Vexium/Assets/Images/4.png)
-![preview #5](Vexium/Assets/Images/4.png)
+![preview #5](Vexium/Assets/Images/5.png)
 
 ## Installation
 
