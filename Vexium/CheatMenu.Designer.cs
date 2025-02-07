@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheatMenu));
             ui_panel = new Panel();
+            ui2_panel = new Panel();
             unhook_button = new Button();
-            contact_button = new Button();
+            other_button = new Button();
             aimbot_button = new Button();
             misc_button = new Button();
             visual_button = new Button();
             logo_picture = new PictureBox();
-            panel1 = new Panel();
             container_panel = new Panel();
             ui_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo_picture).BeginInit();
@@ -46,18 +46,26 @@
             // 
             ui_panel.Anchor = AnchorStyles.None;
             ui_panel.BackColor = Color.FromArgb(25, 25, 25);
+            ui_panel.Controls.Add(ui2_panel);
             ui_panel.Controls.Add(unhook_button);
-            ui_panel.Controls.Add(contact_button);
+            ui_panel.Controls.Add(other_button);
             ui_panel.Controls.Add(aimbot_button);
             ui_panel.Controls.Add(misc_button);
             ui_panel.Controls.Add(visual_button);
             ui_panel.Controls.Add(logo_picture);
-            ui_panel.Controls.Add(panel1);
             ui_panel.Font = new Font("Century Gothic", 13F, FontStyle.Bold);
-            ui_panel.Location = new Point(-3, -1);
+            ui_panel.Location = new Point(0, -2);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(805, 76);
+            ui_panel.Size = new Size(805, 77);
             ui_panel.TabIndex = 0;
+            // 
+            // ui2_panel
+            // 
+            ui2_panel.BackColor = Color.FromArgb(255, 20, 55);
+            ui2_panel.Location = new Point(0, 0);
+            ui2_panel.Name = "ui2_panel";
+            ui2_panel.Size = new Size(805, 13);
+            ui2_panel.TabIndex = 0;
             // 
             // unhook_button
             // 
@@ -71,17 +79,17 @@
             unhook_button.UseVisualStyleBackColor = false;
             unhook_button.Click += unhook_button_Click;
             // 
-            // contact_button
+            // other_button
             // 
-            contact_button.BackColor = Color.FromArgb(40, 40, 40);
-            contact_button.FlatStyle = FlatStyle.Flat;
-            contact_button.Location = new Point(513, 28);
-            contact_button.Name = "contact_button";
-            contact_button.Size = new Size(119, 32);
-            contact_button.TabIndex = 5;
-            contact_button.Text = "Contact";
-            contact_button.UseVisualStyleBackColor = false;
-            contact_button.Click += contact_button_Click;
+            other_button.BackColor = Color.FromArgb(40, 40, 40);
+            other_button.FlatStyle = FlatStyle.Flat;
+            other_button.Location = new Point(513, 28);
+            other_button.Name = "other_button";
+            other_button.Size = new Size(119, 32);
+            other_button.TabIndex = 5;
+            other_button.Text = "Other";
+            other_button.UseVisualStyleBackColor = false;
+            other_button.Click += other_button_Click;
             // 
             // aimbot_button
             // 
@@ -129,34 +137,25 @@
             logo_picture.TabIndex = 1;
             logo_picture.TabStop = false;
             // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.None;
-            panel1.BackColor = Color.FromArgb(255, 20, 55);
-            panel1.Location = new Point(-3, -7);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(808, 20);
-            panel1.TabIndex = 1;
-            // 
             // container_panel
             // 
             container_panel.Anchor = AnchorStyles.None;
-            container_panel.Location = new Point(-3, 72);
+            container_panel.Location = new Point(0, 73);
             container_panel.Name = "container_panel";
-            container_panel.Size = new Size(805, 442);
+            container_panel.Size = new Size(805, 543);
             container_panel.TabIndex = 1;
             // 
             // CheatMenu
             // 
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(802, 514);
+            ClientSize = new Size(802, 615);
             Controls.Add(container_panel);
             Controls.Add(ui_panel);
             Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.White;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(818, 553);
-            MinimumSize = new Size(818, 553);
+            MaximumSize = new Size(818, 654);
+            MinimumSize = new Size(818, 654);
             Name = "CheatMenu";
             Text = "Vexium";
             FormClosing += CheatMenu_FormClosing;
@@ -168,13 +167,13 @@
         #endregion
 
         private Panel ui_panel;
-        private Panel panel1;
         private PictureBox logo_picture;
         private Button visual_button;
         private Button misc_button;
         private Button unhook_button;
-        private Button contact_button;
+        private Button other_button;
         private Button aimbot_button;
         private Panel container_panel;
+        private Panel ui2_panel;
     }
 }

@@ -75,5 +75,33 @@ namespace Vexium.UserControls
             shadowFrameEnabled = shadow_checkbox.Checked;
             PlaySound(_menuSound);
         }
+
+        private void showpos_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            showPosEnabled = showpos_checkbox.Checked;
+            PlaySound(_menuSound);
+        }
+
+        private void wireframe_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            wireframeEnabled = wireframe_checkbox.Checked;
+            PlaySound(_menuSound);
+        }
+
+        public void DisableAll()
+        {
+            wallhack_checkbox.Checked = false;
+            showshots_checkbox.Checked = false;
+            fullbright_checkbox.Checked = false;
+            whiteTexture_checkbox.Checked = false;
+            nosmoke_checkbox.Checked = false;
+            hitboxes_checkbox.Checked = false;
+            minecraft_checkbox.Checked = false;
+            tracers_checkbox.Checked = false;
+            shadow_checkbox.Checked = false;
+            showpos_checkbox.Checked = false;
+            wireframe_checkbox.Checked = false;
+        }
+
     }
 }

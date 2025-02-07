@@ -76,5 +76,14 @@ namespace Vexium.UserControls
                 _ => _functions.aimSmoothness
             };
         }
+
+        public void DisableAll()
+        {
+            aimlock_checkbox.Checked = false;
+            aimbot_checkbox.Checked = false;
+            triggerbot_checkbox.Checked = false;
+            knifebot_checkbox.Checked = false;
+            mouse_checkbox.Checked = false;
+        }
     }
 }

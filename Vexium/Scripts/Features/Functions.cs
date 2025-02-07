@@ -52,21 +52,26 @@ namespace Vexium.Scripts.Features
 
         private Entity _localPlayer = new Entity();
 
-        private nint _client, _engine, _server, _materialsystem, _steam;
+        private nint _client, _engine, _server, _materialsystem, _steam, _vgui;
+
+        private int _isPause;
 
         public string targetLevel = string.Empty;
+
         public bool mousePressed = false;
+
         public float aimSmoothness = 5;
 
         public void Inject()
         {
-            _offsets = GetOffsets("34");
+            _offsets = GetOffsets("current");
             _memory.Inject("hl2");
             _client = _memory.GetModuleBase("client.dll");
             _engine = _memory.GetModuleBase("engine.dll");
             _server = _memory.GetModuleBase("server.dll");
             _steam = _memory.GetModuleBase("steamclient.dll");
             _materialsystem = _memory.GetModuleBase("materialsystem.dll");
+            _vgui = _memory.GetModuleBase("vgui2.dll");
 
             Task.Run(() =>
             {
@@ -85,6 +90,8 @@ namespace Vexium.Scripts.Features
                 _localPlayer.Team = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.m_iTeamNum);
                 _localPlayer.Flags = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.m_fFlags);
                 _localPlayer.LifeState = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.m_lifeState);
+                _localPlayer.Money = _memory.Read<int>(_localPlayer.Address + _offsets!.Player!.m_iAccount);
+                _isPause = _memory.Read<int>(_vgui + _offsets!.Vgui!.isPause);
 
                 GetEntityList();
                 Bunnyhop();
@@ -101,9 +108,21 @@ namespace Vexium.Scripts.Features
                 DrawLowResolution();
                 Thirdperson();
                 AimLock();
+                ShowPos();
+                Wireframe();
 
                 Thread.Sleep(1);
             }
+        }
+
+        private void Wireframe()
+        {
+            _memory.Write(_engine + _offsets!.Engine!.mat_WireFrame, wireframeEnabled ? 1 : 0);
+        }
+
+        private void ShowPos()
+        {
+            _memory.Write(_client + _offsets!.Client!.cl_showPos, showPosEnabled ? 1 : 0);
         }
 
         private void Wallhack()
@@ -123,7 +142,7 @@ namespace Vexium.Scripts.Features
 
         private void Bunnyhop()
         {
-            if (bunnyhopEnabled)
+            if (bunnyhopEnabled && _isPause == 0)
             {
                 if (GetAsyncKeyState(Keys.Space) < 0 && (_localPlayer.Flags == 257 || _localPlayer.Flags == 263))
                 {
@@ -136,7 +155,7 @@ namespace Vexium.Scripts.Features
 
         private void ShowImpact()
         {
-            _memory.Write(_server + _offsets!.Client!.sv_showimpact, showimpactEnabled ? 1 : 0);
+            _memory.Write(_server + _offsets!.Server!.sv_showimpact, showimpactEnabled ? 1 : 0);
         }
 
         private void Antiflash()
@@ -237,7 +256,7 @@ namespace Vexium.Scripts.Features
 
                 if (!(crosshair != 0 && crosshair <= 32))
                 {
-                    entities[0].Position += new Vector3(0, 0, -10);
+                    entities[0].Position += new Vector3(0, 0, -13);
                 }
 
                 Vector2 targetAngles = CalculateAngles(_localPlayer.Position, entities[0].Position);
@@ -367,11 +386,11 @@ namespace Vexium.Scripts.Features
         {
             if (fullbrightEnabled)
             {
-                _memory.Write(_materialsystem + _offsets!.Engine!.mat_fullbright, 1);
+                _memory.Write(_materialsystem + _offsets!.Material!.mat_fullbright, 1);
             }
             else if (!whiteTextureEnabled)
             {
-                _memory.Write(_materialsystem + _offsets!.Engine!.mat_fullbright, 0);
+                _memory.Write(_materialsystem + _offsets!.Material!.mat_fullbright, 0);
             }
         }
 
@@ -379,11 +398,11 @@ namespace Vexium.Scripts.Features
         {
             if (whiteTextureEnabled)
             {
-                _memory.Write(_materialsystem + _offsets!.Engine!.mat_fullbright, 2);
+                _memory.Write(_materialsystem + _offsets!.Material!.mat_fullbright, 2);
             }
             else if (!fullbrightEnabled)
             {
-                _memory.Write(_materialsystem + _offsets!.Engine!.mat_fullbright, 0);
+                _memory.Write(_materialsystem + _offsets!.Material!.mat_fullbright, 0);
             }
         }
 
@@ -409,7 +428,7 @@ namespace Vexium.Scripts.Features
 
         private void DrawLowResolution()
         {
-            _memory.Write(_materialsystem + _offsets!.Engine!.mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
+            _memory.Write(_materialsystem + _offsets!.Material!.mat_showlowresimage, lowresolutionEnabled ? 1 : 0);
         }
 
         public string GetInformation()
@@ -423,7 +442,7 @@ namespace Vexium.Scripts.Features
                 string team = Teams.TryGetValue(_localPlayer.Team, out var teamName) ? teamName : "Unknown Team";
                 string flag = Flags.TryGetValue(_localPlayer.Flags, out var flagName) ? flagName : "Unknown State";
 
-                return $"Team: {team}\nStatus: {flag}\nHealth {_localPlayer.Health}\nArmor: {armor}\nWeapon: {weapon}";
+                return $"Team: {team}\nStatus: {flag}\nHealth {_localPlayer.Health}\nArmor: {armor}\nMoney: {_localPlayer.Money}\nWeapon: {weapon}";
             }
 
             return "Error";
@@ -445,6 +464,9 @@ namespace Vexium.Scripts.Features
         {
             if (thirdpersonEnabled)
             {
+                _memory.Nop(_client + _offsets!.Client!.thirdpersonVoidAddress, _offsets!.Client!.thirdpersonAddressBytes.Length);
+                _memory.Write(_client + _offsets!.Client!.thirdperson, 256);
+
                 _memory.Write(_localPlayer.Address + _offsets!.Player!.m_iObserverMode, 1);
 
                 byte[] virtualKeys = { VK_1, VK_2, VK_3, VK_4, VK_5, VK_6 };
@@ -462,12 +484,14 @@ namespace Vexium.Scripts.Features
                         keybd_event(virtualKeys[i], 0, KEYEVENTF_KEYUP, UIntPtr.Zero);
 
                         _memory.Write(_localPlayer.Address + _offsets!.Player!.m_iObserverMode, 1);
-                        break; 
+                        break;
                     }
                 }
             }
             else
             {
+                _memory.Write(_client + _offsets!.Client!.thirdperson, 0);
+                _memory.WriteBytes(_client + _offsets!.Client!.thirdpersonVoidAddress, _offsets!.Client!.thirdpersonAddressBytes);
                 _memory.Write(_localPlayer.Address + _offsets!.Player!.m_iObserverMode, 0);
             }
         }

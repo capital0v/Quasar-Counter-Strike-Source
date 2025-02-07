@@ -4,27 +4,25 @@
     {
         private static readonly Dictionary<string, OffsetsData> _offsets = new Dictionary<string, OffsetsData>
         {
-            { "34", new OffsetsData
+            { "current", new OffsetsData
                 {
                     Client = new ClientOffsets
                     {
-                        sv_showimpact = 0x588598,
                         weaponName = 0x4D4E63,
                         thirdperson = 0x5065AC,
-                        thirdpersonAddress = 0x145220,
+                        thirdpersonVoidAddress = 0x145220,
                         thirdpersonAddressBytes = new byte[] { 0xC6, 0x81, 0x8D, 0x00, 0x00, 0x00, 0x00 },
                         r_drawothermodels = 0x4C4BA0,
                         r_drawparticles = 0x4F7A40,
                         r_drawrenderhitboxes = 0x4C5FA0,
                         cl_bob = 0x50C868,
-                        dwEntityList = 0x4D5AE4
+                        dwEntityList = 0x4D5AE4,
+                        cl_showPos = 0x4FBD18
                     },
                     Engine = new EngineOffsets
                     {
                         sv_cheats = 0x616A70,
                         mat_WireFrame = 0x5ADD60,
-                        mat_fullbright = 0x121EF8,
-                        mat_showlowresimage = 0x121EB0,
                         viewangles_x = 0x47C340,
                         viewangles_y = 0x47C33C,
                         r_shadowwireframe = 0x5D1768,
@@ -50,6 +48,19 @@
                     {
                         nickname = 0x6D09E8,
                         clantag = 0x6D0AB0,
+                    },
+                    Vgui = new VguiOffsets
+                    {
+                        isPause = 0x56DD8
+                    },
+                    Server = new ServerOffsets
+                    {
+                        sv_showimpact = 0x588598
+                    },
+                    Material = new MaterialSystemOffsets
+                    {
+                        mat_fullbright = 0x121EF8,
+                        mat_showlowresimage = 0x121EB0
                     }
                 }
             },
@@ -66,28 +77,29 @@
             public EngineOffsets? Engine { get; set; }
             public PlayerOffsets? Player { get; set; }
             public SteamOffsets? Steam { get; set; }
+            public VguiOffsets? Vgui { get; set; }
+            public ServerOffsets? Server { get; set; }
+            public MaterialSystemOffsets? Material { get; set; }
         }
 
         public class ClientOffsets
         {
-            public int sv_showimpact;
             public int weaponName;
             public int thirdperson;
-            public int thirdpersonAddress;
+            public int thirdpersonVoidAddress;
             public byte[] thirdpersonAddressBytes;
             public int r_drawothermodels;
             public int r_drawparticles;
             public int r_drawrenderhitboxes;
             public int cl_bob;
             public int dwEntityList;
+            public int cl_showPos;
         }
 
         public class EngineOffsets
         {
             public int sv_cheats;
             public int mat_WireFrame;
-            public int mat_fullbright;
-            public int mat_showlowresimage;
             public int viewangles_x;
             public int viewangles_y;
             public int r_shadowwireframe;
@@ -115,6 +127,22 @@
         {
             public int nickname;
             public int clantag;
+        }
+
+        public class VguiOffsets
+        {
+            public int isPause;
+        }
+
+        public class ServerOffsets
+        {
+            public int sv_showimpact;
+        }
+
+        public class MaterialSystemOffsets
+        {
+            public int mat_fullbright;
+            public int mat_showlowresimage;
         }
     }
 }

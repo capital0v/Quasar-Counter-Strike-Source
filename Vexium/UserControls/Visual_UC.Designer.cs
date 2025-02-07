@@ -35,12 +35,14 @@
             nosmoke_checkbox = new CheckBox();
             hitboxes_checkbox = new CheckBox();
             ui_panel = new Panel();
+            showpos_checkbox = new CheckBox();
             shadow_checkbox = new CheckBox();
             tracers_checkbox = new CheckBox();
             panel1 = new Panel();
             minecraft_checkbox = new CheckBox();
             ui_label = new Label();
             ui2_label = new Label();
+            wireframe_checkbox = new CheckBox();
             ui_panel.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -114,14 +116,26 @@
             // ui_panel
             // 
             ui_panel.BackColor = Color.FromArgb(40, 40, 40);
+            ui_panel.Controls.Add(showpos_checkbox);
             ui_panel.Controls.Add(shadow_checkbox);
             ui_panel.Controls.Add(tracers_checkbox);
             ui_panel.Controls.Add(hitboxes_checkbox);
             ui_panel.Controls.Add(wallhack_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 345);
+            ui_panel.Size = new Size(335, 451);
             ui_panel.TabIndex = 7;
+            // 
+            // showpos_checkbox
+            // 
+            showpos_checkbox.AutoSize = true;
+            showpos_checkbox.Location = new Point(14, 132);
+            showpos_checkbox.Name = "showpos_checkbox";
+            showpos_checkbox.Size = new Size(148, 26);
+            showpos_checkbox.TabIndex = 9;
+            showpos_checkbox.Text = "Show position";
+            showpos_checkbox.UseVisualStyleBackColor = true;
+            showpos_checkbox.CheckedChanged += showpos_checkbox_CheckedChanged;
             // 
             // shadow_checkbox
             // 
@@ -148,6 +162,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(40, 40, 40);
+            panel1.Controls.Add(wireframe_checkbox);
             panel1.Controls.Add(minecraft_checkbox);
             panel1.Controls.Add(whiteTexture_checkbox);
             panel1.Controls.Add(fullbright_checkbox);
@@ -155,7 +170,7 @@
             panel1.Controls.Add(showshots_checkbox);
             panel1.Location = new Point(428, 66);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 345);
+            panel1.Size = new Size(335, 451);
             panel1.TabIndex = 8;
             // 
             // minecraft_checkbox
@@ -187,6 +202,17 @@
             ui2_label.TabIndex = 10;
             ui2_label.Text = "World";
             // 
+            // wireframe_checkbox
+            // 
+            wireframe_checkbox.AutoSize = true;
+            wireframe_checkbox.Location = new Point(14, 162);
+            wireframe_checkbox.Name = "wireframe_checkbox";
+            wireframe_checkbox.Size = new Size(119, 26);
+            wireframe_checkbox.TabIndex = 7;
+            wireframe_checkbox.Text = "Wireframe";
+            wireframe_checkbox.UseVisualStyleBackColor = true;
+            wireframe_checkbox.CheckedChanged += wireframe_checkbox_CheckedChanged;
+            // 
             // Visual_UC
             // 
             AutoScaleDimensions = new SizeF(10F, 19F);
@@ -199,10 +225,10 @@
             Font = new Font("Century Gothic", 13F, FontStyle.Bold);
             ForeColor = Color.White;
             Margin = new Padding(4);
-            MaximumSize = new Size(808, 442);
-            MinimumSize = new Size(808, 442);
+            MaximumSize = new Size(805, 543);
+            MinimumSize = new Size(805, 543);
             Name = "Visual_UC";
-            Size = new Size(808, 442);
+            Size = new Size(805, 543);
             ui_panel.ResumeLayout(false);
             ui_panel.PerformLayout();
             panel1.ResumeLayout(false);
@@ -226,5 +252,7 @@
         private Label ui2_label;
         private CheckBox minecraft_checkbox;
         private CheckBox shadow_checkbox;
+        private CheckBox showpos_checkbox;
+        private CheckBox wireframe_checkbox;
     }
 }

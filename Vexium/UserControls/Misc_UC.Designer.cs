@@ -47,7 +47,6 @@
             nickname_button = new Button();
             label2 = new Label();
             nickname_textbox = new TextBox();
-            thirdperson_checkbox = new CheckBox();
             ui_panel.SuspendLayout();
             ui2_panel.SuspendLayout();
             panel1.SuspendLayout();
@@ -61,7 +60,7 @@
             ui_panel.Controls.Add(antiflash_checkbox);
             ui_panel.Location = new Point(24, 66);
             ui_panel.Name = "ui_panel";
-            ui_panel.Size = new Size(335, 123);
+            ui_panel.Size = new Size(335, 147);
             ui_panel.TabIndex = 8;
             // 
             // thirdperson_checkbox
@@ -124,7 +123,7 @@
             ui2_panel.Controls.Add(information_label);
             ui2_panel.Location = new Point(428, 66);
             ui2_panel.Name = "ui2_panel";
-            ui2_panel.Size = new Size(335, 363);
+            ui2_panel.Size = new Size(335, 451);
             ui2_panel.TabIndex = 9;
             // 
             // update_textbox
@@ -168,7 +167,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 202);
+            label1.Location = new Point(24, 233);
             label1.Name = "label1";
             label1.Size = new Size(257, 22);
             label1.TabIndex = 14;
@@ -183,16 +182,16 @@
             panel1.Controls.Add(nickname_button);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(nickname_textbox);
-            panel1.Location = new Point(24, 242);
+            panel1.Location = new Point(24, 270);
             panel1.Name = "panel1";
-            panel1.Size = new Size(335, 187);
+            panel1.Size = new Size(335, 247);
             panel1.TabIndex = 13;
             // 
             // clantag_button
             // 
             clantag_button.BackColor = Color.FromArgb(40, 40, 40);
             clantag_button.FlatStyle = FlatStyle.Flat;
-            clantag_button.Location = new Point(189, 143);
+            clantag_button.Location = new Point(189, 153);
             clantag_button.Name = "clantag_button";
             clantag_button.Size = new Size(124, 29);
             clantag_button.TabIndex = 16;
@@ -203,7 +202,7 @@
             // ui3_label
             // 
             ui3_label.AutoSize = true;
-            ui3_label.Location = new Point(12, 107);
+            ui3_label.Location = new Point(12, 117);
             ui3_label.Name = "ui3_label";
             ui3_label.Size = new Size(80, 22);
             ui3_label.TabIndex = 17;
@@ -211,7 +210,7 @@
             // 
             // clantag_textbox
             // 
-            clantag_textbox.Location = new Point(17, 143);
+            clantag_textbox.Location = new Point(17, 153);
             clantag_textbox.Name = "clantag_textbox";
             clantag_textbox.Size = new Size(124, 29);
             clantag_textbox.TabIndex = 18;
@@ -221,7 +220,7 @@
             // 
             nickname_button.BackColor = Color.FromArgb(40, 40, 40);
             nickname_button.FlatStyle = FlatStyle.Flat;
-            nickname_button.Location = new Point(189, 50);
+            nickname_button.Location = new Point(189, 60);
             nickname_button.Name = "nickname_button";
             nickname_button.Size = new Size(124, 29);
             nickname_button.TabIndex = 13;
@@ -232,7 +231,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 14);
+            label2.Location = new Point(12, 24);
             label2.Name = "label2";
             label2.Size = new Size(101, 22);
             label2.TabIndex = 13;
@@ -240,22 +239,11 @@
             // 
             // nickname_textbox
             // 
-            nickname_textbox.Location = new Point(17, 50);
+            nickname_textbox.Location = new Point(17, 60);
             nickname_textbox.Name = "nickname_textbox";
             nickname_textbox.Size = new Size(124, 29);
             nickname_textbox.TabIndex = 15;
             nickname_textbox.Text = "...";
-            // 
-            // thirdperson_checkbox
-            // 
-            thirdperson_checkbox.AutoSize = true;
-            thirdperson_checkbox.Location = new Point(12, 75);
-            thirdperson_checkbox.Name = "thirdperson_checkbox";
-            thirdperson_checkbox.Size = new Size(131, 26);
-            thirdperson_checkbox.TabIndex = 2;
-            thirdperson_checkbox.Text = "Thirdperson";
-            thirdperson_checkbox.UseVisualStyleBackColor = true;
-            thirdperson_checkbox.CheckedChanged += thirdperson_checkbox_CheckedChanged;
             // 
             // Misc_UC
             // 
@@ -270,10 +258,10 @@
             Font = new Font("Century Gothic", 13F, FontStyle.Bold);
             ForeColor = Color.White;
             Margin = new Padding(4);
-            MaximumSize = new Size(808, 442);
-            MinimumSize = new Size(808, 442);
+            MaximumSize = new Size(805, 543);
+            MinimumSize = new Size(805, 543);
             Name = "Misc_UC";
-            Size = new Size(808, 442);
+            Size = new Size(805, 543);
             ui_panel.ResumeLayout(false);
             ui_panel.PerformLayout();
             ui2_panel.ResumeLayout(false);

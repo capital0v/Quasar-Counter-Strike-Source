@@ -11,7 +11,7 @@
     <Compile Update="UserControls\Combat_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Contacts_UC.cs">
+    <Compile Update="UserControls\Other_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Misc_UC.cs">

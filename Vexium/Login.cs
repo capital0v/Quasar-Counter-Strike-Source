@@ -4,6 +4,8 @@ namespace Vexium
 {
     public partial class Login : Form
     {
+        private CheatMenu _menu;
+
         public Login()
         {
             InitializeComponent();
@@ -16,8 +18,8 @@ namespace Vexium
             if (processes.Length > 0)
             {
                 this.Hide();
-                CheatMenu menu = new CheatMenu(windowed_checkbox.Checked);
-                menu.Show();
+                _menu = new CheatMenu(windowed_checkbox.Checked);
+                _menu.Show();
             }
             else
             {

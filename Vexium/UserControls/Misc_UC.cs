@@ -73,5 +73,12 @@ namespace Vexium.UserControls
             thirdpersonEnabled = thirdperson_checkbox.Checked;
             _functions.Thirdperson();
         }
+
+        public void DisableAll()
+        {
+            bunnyhop_checkbox.Checked = false;
+            thirdperson_checkbox.Checked = false;
+            antiflash_checkbox.Checked = false;
+        }
     }
 }

@@ -1,7 +1,13 @@
-﻿namespace Vexium.Scripts
+﻿using Vexium.UserControls;
+
+namespace Vexium.Scripts
 {
     class States
     {
+        public static Combat_UC? combatUC;
+        public static Misc_UC? miscUC;
+        public static Visual_UC? visualUC;
+
         public static bool bunnyhopEnabled;
         public static bool wallhackEnabled;
         public static bool showimpactEnabled;
@@ -19,8 +25,10 @@
         public static bool knifebotEnabled;
         public static bool thirdpersonEnabled;
         public static bool aimlockEnabled;
+        public static bool showPosEnabled;
+        public static bool wireframeEnabled;
 
-        public static void DisableAll()
+        public async static void DisableAll(bool exit)
         {
             bunnyhopEnabled = false;
             wallhackEnabled = false;
@@ -39,6 +47,18 @@
             knifebotEnabled = false;
             thirdpersonEnabled = false;
             aimlockEnabled = false;
+            showPosEnabled = false;
+            wireframeEnabled = false;
+
+            combatUC.DisableAll();
+            miscUC.DisableAll();
+            visualUC.DisableAll();
+
+            if (exit)
+            {
+                await Task.Delay(10);
+                Environment.Exit(0);
+            }
         }
 
     }
