@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
             visual_button = new Button();
-            logo_pciture = new PictureBox();
+            logo_picture = new PictureBox();
             windowed_checkbox = new CheckBox();
-            ((System.ComponentModel.ISupportInitialize)logo_pciture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)logo_picture).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -59,16 +59,16 @@
             visual_button.UseVisualStyleBackColor = false;
             visual_button.Click += visual_button_Click;
             // 
-            // logo_pciture
+            // logo_picture
             // 
-            logo_pciture.Image = (Image)resources.GetObject("logo_pciture.Image");
-            logo_pciture.Location = new Point(88, 33);
-            logo_pciture.Margin = new Padding(4, 3, 4, 3);
-            logo_pciture.Name = "logo_pciture";
-            logo_pciture.Size = new Size(149, 127);
-            logo_pciture.SizeMode = PictureBoxSizeMode.Zoom;
-            logo_pciture.TabIndex = 4;
-            logo_pciture.TabStop = false;
+            logo_picture.Image = (Image)resources.GetObject("logo_picture.Image");
+            logo_picture.Location = new Point(88, 33);
+            logo_picture.Margin = new Padding(4, 3, 4, 3);
+            logo_picture.Name = "logo_picture";
+            logo_picture.Size = new Size(149, 127);
+            logo_picture.SizeMode = PictureBoxSizeMode.Zoom;
+            logo_picture.TabIndex = 4;
+            logo_picture.TabStop = false;
             // 
             // windowed_checkbox
             // 
@@ -87,7 +87,7 @@
             BackColor = Color.FromArgb(30, 30, 30);
             ClientSize = new Size(331, 278);
             Controls.Add(windowed_checkbox);
-            Controls.Add(logo_pciture);
+            Controls.Add(logo_picture);
             Controls.Add(visual_button);
             Controls.Add(panel1);
             Font = new Font("Century Gothic", 13F, FontStyle.Bold);
@@ -99,7 +99,7 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Vexium";
-            ((System.ComponentModel.ISupportInitialize)logo_pciture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)logo_picture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -108,7 +108,7 @@
 
         private Panel panel1;
         private Button visual_button;
-        private PictureBox logo_pciture;
+        private PictureBox logo_picture;
         private CheckBox windowed_checkbox;
     }
 }

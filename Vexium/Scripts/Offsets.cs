@@ -4,7 +4,8 @@
     {
         private static readonly Dictionary<string, OffsetsData> _offsets = new Dictionary<string, OffsetsData>
         {
-            { "current", new OffsetsData
+            {
+                "current", new OffsetsData
                 {
                     Client = new ClientOffsets
                     {
@@ -64,6 +65,69 @@
                     }
                 }
             },
+            {
+                // in the process of filling
+
+                "csso 1.1", new OffsetsData
+                {
+                    Client = new ClientOffsets
+                    {
+                        weaponName = 0x4D4E63,
+                        thirdperson = 0x5065AC,
+                        thirdpersonVoidAddress = 0x145220,
+                        thirdpersonAddressBytes = new byte[] { 0xC6, 0x81, 0x8D, 0x00, 0x00, 0x00, 0x00 },
+                        r_drawothermodels = 0x4C4BA0,
+                        r_drawparticles = 0x4F7A40,
+                        r_drawrenderhitboxes = 0x4C5FA0,
+                        cl_bob = 0x50C868,
+                        dwEntityList = 0x6E458C,
+                        cl_showPos = 0x4FBD18
+                    },
+                    Engine = new EngineOffsets
+                    {
+                        sv_cheats = 0x616A70,
+                        mat_WireFrame = 0x5ADD60,
+                        viewangles_x = 0x47C340,
+                        viewangles_y = 0x47C33C,
+                        r_shadowwireframe = 0x5D1768,
+                        r_visualizetracers = 0x5AA410
+                    },
+                    Player = new PlayerOffsets
+                    {
+                        dwLocalPlayer = 0x6D6870,
+                        dwForceJump = 0x4F5D24,
+                        crosshairID = 0x14F0,
+                        m_fFlags = 0x430,
+                        m_iTeamNum = 0xA4,
+                        m_iHealth = 0x9C,
+                        m_iArmor = -9999,
+                        m_vecPosition = 0x358,
+                        fMaxFlashAlpha = 0x9CE0,
+                        m_iObserverMode = 0x2F58,
+                        m_iAccount = 0x9D3C,
+                        dwForceAttack = -99999,
+                        m_lifeState = 0x9B
+                    },
+                    Steam = new SteamOffsets
+                    {
+                        nickname = 0x6D09E8,
+                        clantag = 0x6D0AB0,
+                    },
+                    Vgui = new VguiOffsets
+                    {
+                        isPause = 0x56DD8
+                    },
+                    Server = new ServerOffsets
+                    {
+                        sv_showimpact = 0x588598
+                    },
+                    Material = new MaterialSystemOffsets
+                    {
+                        mat_fullbright = 0x121EF8,
+                        mat_showlowresimage = 0x121EB0
+                    }
+                }
+            }
         };
 
         public static OffsetsData GetOffsets(string version)

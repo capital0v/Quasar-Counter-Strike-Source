@@ -132,7 +132,7 @@
             logo_picture.Image = (Image)resources.GetObject("logo_picture.Image");
             logo_picture.Location = new Point(15, 19);
             logo_picture.Name = "logo_picture";
-            logo_picture.Size = new Size(47, 50);
+            logo_picture.Size = new Size(50, 50);
             logo_picture.SizeMode = PictureBoxSizeMode.Zoom;
             logo_picture.TabIndex = 1;
             logo_picture.TabStop = false;
